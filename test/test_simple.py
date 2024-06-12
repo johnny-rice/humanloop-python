@@ -36,6 +36,10 @@ class TestSimple(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def test_pydantic_with_string_type_hints(self):
+        logs_response = self.humanloop.logs.list(project_id="id")
+        self.assertIsNotNone(logs_response)
+
     def test_deserialize_and_register(self):
         prompt = """
         ---
