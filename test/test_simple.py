@@ -291,7 +291,7 @@ async def test_chat():
 @pytest.mark.asyncio
 async def test_model_configs_register():
     humanloop = Humanloop(
-        host="https://neostaging.humanloop.ml/v4",
+        host="http://127.0.0.1:4010",
         api_key=os.environ["HUMANLOOP_API_KEY"],
         openai_api_key=os.environ["OPENAI_API_KEY"],
     )
