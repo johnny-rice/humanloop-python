@@ -5,7 +5,7 @@
 # Humanloop<a id="humanloop"></a>
 
 
-[![PyPI](https://img.shields.io/badge/PyPI-v0.7.30-blue)](https://pypi.org/project/humanloop/0.7.30)
+[![PyPI](https://img.shields.io/badge/PyPI-v0.7.31-blue)](https://pypi.org/project/humanloop/0.7.31)
 [![README.md](https://img.shields.io/badge/README-Click%20Here-green)](https://github.com/humanloop/humanloop-python#readme)
 
 </div>
@@ -84,11 +84,6 @@
   * [`humanloop.evaluators.get`](#humanloopevaluatorsget)
   * [`humanloop.evaluators.list`](#humanloopevaluatorslist)
   * [`humanloop.evaluators.update`](#humanloopevaluatorsupdate)
-  * [`humanloop.experiments.create`](#humanloopexperimentscreate)
-  * [`humanloop.experiments.delete`](#humanloopexperimentsdelete)
-  * [`humanloop.experiments.list`](#humanloopexperimentslist)
-  * [`humanloop.experiments.sample`](#humanloopexperimentssample)
-  * [`humanloop.experiments.update`](#humanloopexperimentsupdate)
   * [`humanloop.feedback`](#humanloopfeedback)
   * [`humanloop.logs.delete`](#humanlooplogsdelete)
   * [`humanloop.logs.get`](#humanlooplogsget)
@@ -129,7 +124,7 @@ Python >=3.7
 ## Installation<a id="installation"></a>
 
 ```sh
-pip install humanloop==0.7.30
+pip install humanloop==0.7.31
 ```
 
 ## Getting Started<a id="getting-started"></a>
@@ -2601,207 +2596,6 @@ The model configuration used to generate.
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/evaluators/{id}` `patch`
-
-[🔙 **Back to Table of Contents**](#table-of-contents)
-
----
-
-### `humanloop.experiments.create`<a id="humanloopexperimentscreate"></a>
-
-Create an experiment for your project.
-
-You can optionally specify IDs of your project's model configs to include
-in the experiment, along with a set of labels to consider as positive feedback
-and whether the experiment should be set as active.
-
-#### 🛠️ Usage<a id="🛠️-usage"></a>
-
-```python
-create_response = humanloop.experiments.create(
-    name="string_example",
-    positive_labels=[
-        {
-            "type": "type_example",
-            "value": "value_example",
-        }
-    ],
-    project_id="project_id_example",
-    config_ids=["string_example"],
-    set_active=False,
-)
-```
-
-#### ⚙️ Parameters<a id="⚙️-parameters"></a>
-
-##### name: `str`<a id="name-str"></a>
-
-Name of experiment.
-
-##### positive_labels: List[`PositiveLabel`]<a id="positive_labels-listpositivelabel"></a>
-
-Feedback labels to treat as positive user feedback. Used to monitor the performance of model configs in the experiment.
-
-##### project_id: `str`<a id="project_id-str"></a>
-
-String ID of project. Starts with `pr_`.
-
-##### config_ids: [`CreateExperimentRequestConfigIds`](./humanloop/type/create_experiment_request_config_ids.py)<a id="config_ids-createexperimentrequestconfigidshumanlooptypecreate_experiment_request_config_idspy"></a>
-
-##### set_active: `bool`<a id="set_active-bool"></a>
-
-Whether to set the created project as the project's active experiment.
-
-#### ⚙️ Request Body<a id="⚙️-request-body"></a>
-
-[`CreateExperimentRequest`](./humanloop/type/create_experiment_request.py)
-#### 🔄 Return<a id="🔄-return"></a>
-
-[`ExperimentResponse`](./humanloop/pydantic/experiment_response.py)
-
-#### 🌐 Endpoint<a id="🌐-endpoint"></a>
-
-`/projects/{project_id}/experiments` `post`
-
-[🔙 **Back to Table of Contents**](#table-of-contents)
-
----
-
-### `humanloop.experiments.delete`<a id="humanloopexperimentsdelete"></a>
-
-Delete the experiment with the specified ID.
-
-#### 🛠️ Usage<a id="🛠️-usage"></a>
-
-```python
-humanloop.experiments.delete(
-    experiment_id="experiment_id_example",
-)
-```
-
-#### ⚙️ Parameters<a id="⚙️-parameters"></a>
-
-##### experiment_id: `str`<a id="experiment_id-str"></a>
-
-String ID of experiment. Starts with `exp_`.
-
-#### 🌐 Endpoint<a id="🌐-endpoint"></a>
-
-`/experiments/{experiment_id}` `delete`
-
-[🔙 **Back to Table of Contents**](#table-of-contents)
-
----
-
-### `humanloop.experiments.list`<a id="humanloopexperimentslist"></a>
-
-Get an array of experiments associated to your project.
-
-#### 🛠️ Usage<a id="🛠️-usage"></a>
-
-```python
-list_response = humanloop.experiments.list(
-    project_id="project_id_example",
-)
-```
-
-#### ⚙️ Parameters<a id="⚙️-parameters"></a>
-
-##### project_id: `str`<a id="project_id-str"></a>
-
-String ID of project. Starts with `pr_`.
-
-#### 🔄 Return<a id="🔄-return"></a>
-
-[`ExperimentsListResponse`](./humanloop/pydantic/experiments_list_response.py)
-
-#### 🌐 Endpoint<a id="🌐-endpoint"></a>
-
-`/projects/{project_id}/experiments` `get`
-
-[🔙 **Back to Table of Contents**](#table-of-contents)
-
----
-
-### `humanloop.experiments.sample`<a id="humanloopexperimentssample"></a>
-
-Samples a model config from the experiment's active model configs.
-
-#### 🛠️ Usage<a id="🛠️-usage"></a>
-
-```python
-sample_response = humanloop.experiments.sample(
-    experiment_id="experiment_id_example",
-)
-```
-
-#### ⚙️ Parameters<a id="⚙️-parameters"></a>
-
-##### experiment_id: `str`<a id="experiment_id-str"></a>
-
-String ID of experiment. Starts with `exp_`.
-
-#### 🔄 Return<a id="🔄-return"></a>
-
-[`GetModelConfigResponse`](./humanloop/pydantic/get_model_config_response.py)
-
-#### 🌐 Endpoint<a id="🌐-endpoint"></a>
-
-`/experiments/{experiment_id}/model-config` `get`
-
-[🔙 **Back to Table of Contents**](#table-of-contents)
-
----
-
-### `humanloop.experiments.update`<a id="humanloopexperimentsupdate"></a>
-
-Update your experiment, including registering and de-registering
-model configs.
-
-#### 🛠️ Usage<a id="🛠️-usage"></a>
-
-```python
-update_response = humanloop.experiments.update(
-    experiment_id="experiment_id_example",
-    name="string_example",
-    positive_labels=[
-        {
-            "type": "type_example",
-            "value": "value_example",
-        }
-    ],
-    config_ids_to_register=["string_example"],
-    config_ids_to_deregister=["string_example"],
-)
-```
-
-#### ⚙️ Parameters<a id="⚙️-parameters"></a>
-
-##### experiment_id: `str`<a id="experiment_id-str"></a>
-
-String ID of experiment. Starts with `exp_`.
-
-##### name: `str`<a id="name-str"></a>
-
-Name of experiment.
-
-##### positive_labels: List[`PositiveLabel`]<a id="positive_labels-listpositivelabel"></a>
-
-Feedback labels to treat as positive user feedback. Used to monitor the performance of model configs in the experiment.
-
-##### config_ids_to_register: [`UpdateExperimentRequestConfigIdsToRegister`](./humanloop/type/update_experiment_request_config_ids_to_register.py)<a id="config_ids_to_register-updateexperimentrequestconfigidstoregisterhumanlooptypeupdate_experiment_request_config_ids_to_registerpy"></a>
-
-##### config_ids_to_deregister: [`UpdateExperimentRequestConfigIdsToDeregister`](./humanloop/type/update_experiment_request_config_ids_to_deregister.py)<a id="config_ids_to_deregister-updateexperimentrequestconfigidstoderegisterhumanlooptypeupdate_experiment_request_config_ids_to_deregisterpy"></a>
-
-#### ⚙️ Request Body<a id="⚙️-request-body"></a>
-
-[`UpdateExperimentRequest`](./humanloop/type/update_experiment_request.py)
-#### 🔄 Return<a id="🔄-return"></a>
-
-[`ExperimentResponse`](./humanloop/pydantic/experiment_response.py)
-
-#### 🌐 Endpoint<a id="🌐-endpoint"></a>
-
-`/experiments/{experiment_id}` `patch`
 
 [🔙 **Back to Table of Contents**](#table-of-contents)
 
