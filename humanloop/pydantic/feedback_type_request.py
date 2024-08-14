@@ -22,11 +22,11 @@ class FeedbackTypeRequest(BaseModel):
     # The type of feedback to update.
     type: str = Field(alias='type')
 
+    # The data type associated to this feedback type; whether it is a 'text'/'select'/'multi_select'.
+    class_: FeedbackClass = Field(alias='class')
+
     # The feedback values to be available. This field should only be populated when updating a 'select' or 'multi_select' feedback class.
     values: typing.Optional[typing.List[FeedbackLabelRequest]] = Field(None, alias='values')
-
-    # The data type associated to this feedback type; whether it is a 'text'/'select'/'multi_select'. This is optional when updating the default feedback types (i.e. when `type` is 'rating', 'action' or 'issue').
-    class_: typing.Optional[FeedbackClass] = Field(None, alias='class')
 
     model_config = ConfigDict(
         protected_namespaces=(),

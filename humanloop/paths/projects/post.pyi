@@ -35,17 +35,14 @@ from humanloop import schemas  # noqa: F401
 from humanloop.model.project_response import ProjectResponse as ProjectResponseSchema
 from humanloop.model.http_validation_error import HTTPValidationError as HTTPValidationErrorSchema
 from humanloop.model.create_project_request import CreateProjectRequest as CreateProjectRequestSchema
-from humanloop.model.feedback_type_request import FeedbackTypeRequest as FeedbackTypeRequestSchema
 
 from humanloop.type.project_response import ProjectResponse
 from humanloop.type.create_project_request import CreateProjectRequest
 from humanloop.type.http_validation_error import HTTPValidationError
-from humanloop.type.feedback_type_request import FeedbackTypeRequest
 
 from ...api_client import Dictionary
 from humanloop.pydantic.create_project_request import CreateProjectRequest as CreateProjectRequestPydantic
 from humanloop.pydantic.http_validation_error import HTTPValidationError as HTTPValidationErrorPydantic
-from humanloop.pydantic.feedback_type_request import FeedbackTypeRequest as FeedbackTypeRequestPydantic
 from humanloop.pydantic.project_response import ProjectResponse as ProjectResponsePydantic
 
 # body param
@@ -111,15 +108,12 @@ class BaseApi(api_client.Api):
     def _create_mapped_args(
         self,
         name: str,
-        feedback_types: typing.Optional[typing.List[FeedbackTypeRequest]] = None,
         directory_id: typing.Optional[str] = None,
     ) -> api_client.MappedArgs:
         args: api_client.MappedArgs = api_client.MappedArgs()
         _body = {}
         if name is not None:
             _body["name"] = name
-        if feedback_types is not None:
-            _body["feedback_types"] = feedback_types
         if directory_id is not None:
             _body["directory_id"] = directory_id
         args.body = _body
@@ -330,7 +324,6 @@ class CreateRaw(BaseApi):
     async def acreate(
         self,
         name: str,
-        feedback_types: typing.Optional[typing.List[FeedbackTypeRequest]] = None,
         directory_id: typing.Optional[str] = None,
         **kwargs,
     ) -> typing.Union[
@@ -340,7 +333,6 @@ class CreateRaw(BaseApi):
     ]:
         args = self._create_mapped_args(
             name=name,
-            feedback_types=feedback_types,
             directory_id=directory_id,
         )
         return await self._acreate_oapg(
@@ -351,7 +343,6 @@ class CreateRaw(BaseApi):
     def create(
         self,
         name: str,
-        feedback_types: typing.Optional[typing.List[FeedbackTypeRequest]] = None,
         directory_id: typing.Optional[str] = None,
     ) -> typing.Union[
         ApiResponseFor201,
@@ -359,7 +350,6 @@ class CreateRaw(BaseApi):
     ]:
         args = self._create_mapped_args(
             name=name,
-            feedback_types=feedback_types,
             directory_id=directory_id,
         )
         return self._create_oapg(
@@ -371,14 +361,12 @@ class Create(BaseApi):
     async def acreate(
         self,
         name: str,
-        feedback_types: typing.Optional[typing.List[FeedbackTypeRequest]] = None,
         directory_id: typing.Optional[str] = None,
         validate: bool = False,
         **kwargs,
     ) -> ProjectResponsePydantic:
         raw_response = await self.raw.acreate(
             name=name,
-            feedback_types=feedback_types,
             directory_id=directory_id,
             **kwargs,
         )
@@ -390,13 +378,11 @@ class Create(BaseApi):
     def create(
         self,
         name: str,
-        feedback_types: typing.Optional[typing.List[FeedbackTypeRequest]] = None,
         directory_id: typing.Optional[str] = None,
         validate: bool = False,
     ) -> ProjectResponsePydantic:
         raw_response = self.raw.create(
             name=name,
-            feedback_types=feedback_types,
             directory_id=directory_id,
         )
         if validate:
@@ -410,7 +396,6 @@ class ApiForpost(BaseApi):
     async def apost(
         self,
         name: str,
-        feedback_types: typing.Optional[typing.List[FeedbackTypeRequest]] = None,
         directory_id: typing.Optional[str] = None,
         **kwargs,
     ) -> typing.Union[
@@ -420,7 +405,6 @@ class ApiForpost(BaseApi):
     ]:
         args = self._create_mapped_args(
             name=name,
-            feedback_types=feedback_types,
             directory_id=directory_id,
         )
         return await self._acreate_oapg(
@@ -431,7 +415,6 @@ class ApiForpost(BaseApi):
     def post(
         self,
         name: str,
-        feedback_types: typing.Optional[typing.List[FeedbackTypeRequest]] = None,
         directory_id: typing.Optional[str] = None,
     ) -> typing.Union[
         ApiResponseFor201,
@@ -439,7 +422,6 @@ class ApiForpost(BaseApi):
     ]:
         args = self._create_mapped_args(
             name=name,
-            feedback_types=feedback_types,
             directory_id=directory_id,
         )
         return self._create_oapg(

@@ -17,7 +17,6 @@ from pydantic import BaseModel, Field, RootModel, ConfigDict
 
 from humanloop.pydantic.config_type import ConfigType
 from humanloop.pydantic.evaluator_response import EvaluatorResponse
-from humanloop.pydantic.experiment_response import ExperimentResponse
 from humanloop.pydantic.feedback_types import FeedbackTypes
 from humanloop.pydantic.project_config_response import ProjectConfigResponse
 from humanloop.pydantic.project_user_response import ProjectUserResponse
@@ -45,10 +44,7 @@ class ProjectResponse(BaseModel):
 
     updated_at: datetime = Field(alias='updated_at')
 
-    # Experiment that has been set as the project's active deployment. At most one of active_experiment and active_model_config can be set.
-    active_experiment: typing.Optional[ExperimentResponse] = Field(None, alias='active_experiment')
-
-    # Config that has been set as the project's active deployment. At most one of active_experiment and active_model_config can be set.
+    # Config that has been set as the project's active deployment.
     active_config: typing.Optional[ProjectConfigResponse] = Field(None, alias='active_config')
 
     config_type: typing.Optional[ConfigType] = Field(None, alias='config_type')

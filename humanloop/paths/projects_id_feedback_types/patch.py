@@ -32,18 +32,12 @@ import frozendict  # noqa: F401
 
 from humanloop import schemas  # noqa: F401
 
-from humanloop.model.projects_update_feedback_types_request import ProjectsUpdateFeedbackTypesRequest as ProjectsUpdateFeedbackTypesRequestSchema
 from humanloop.model.http_validation_error import HTTPValidationError as HTTPValidationErrorSchema
-from humanloop.model.feedback_types import FeedbackTypes as FeedbackTypesSchema
 
-from humanloop.type.projects_update_feedback_types_request import ProjectsUpdateFeedbackTypesRequest
-from humanloop.type.feedback_types import FeedbackTypes
 from humanloop.type.http_validation_error import HTTPValidationError
 
 from ...api_client import Dictionary
 from humanloop.pydantic.http_validation_error import HTTPValidationError as HTTPValidationErrorPydantic
-from humanloop.pydantic.feedback_types import FeedbackTypes as FeedbackTypesPydantic
-from humanloop.pydantic.projects_update_feedback_types_request import ProjectsUpdateFeedbackTypesRequest as ProjectsUpdateFeedbackTypesRequestPydantic
 
 from . import path
 
@@ -73,31 +67,20 @@ request_path_id = api_client.PathParameter(
     schema=IdSchema,
     required=True,
 )
-# body param
-SchemaForRequestBodyApplicationJson = ProjectsUpdateFeedbackTypesRequestSchema
-
-
-request_body_projects_update_feedback_types_request = api_client.RequestBody(
-    content={
-        'application/json': api_client.MediaType(
-            schema=SchemaForRequestBodyApplicationJson),
-    },
-    required=True,
-)
 _auth = [
     'APIKeyHeader',
 ]
-SchemaFor200ResponseBodyApplicationJson = FeedbackTypesSchema
+SchemaFor200ResponseBodyApplicationJson = schemas.DictSchema
 
 
 @dataclass
 class ApiResponseFor200(api_client.ApiResponse):
-    body: FeedbackTypes
+    body: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]
 
 
 @dataclass
 class ApiResponseFor200Async(api_client.AsyncApiResponse):
-    body: FeedbackTypes
+    body: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]
 
 
 _response_for_200 = api_client.OpenApiResponse(
@@ -142,13 +125,10 @@ class BaseApi(api_client.Api):
 
     def _update_feedback_types_mapped_args(
         self,
-        body: ProjectsUpdateFeedbackTypesRequest,
         id: str,
     ) -> api_client.MappedArgs:
         args: api_client.MappedArgs = api_client.MappedArgs()
         _path_params = {}
-        _body = {}
-        args.body = body if body is not None else _body
         if id is not None:
             _path_params["id"] = id
         args.path = _path_params
@@ -156,12 +136,10 @@ class BaseApi(api_client.Api):
 
     async def _aupdate_feedback_types_oapg(
         self,
-        body: typing.Any = None,
             path_params: typing.Optional[dict] = {},
         skip_deserialization: bool = True,
         timeout: typing.Optional[typing.Union[float, typing.Tuple]] = None,
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
-        content_type: str = 'application/json',
         stream: bool = False,
         **kwargs,
     ) -> typing.Union[
@@ -197,35 +175,19 @@ class BaseApi(api_client.Api):
             for accept_content_type in accept_content_types:
                 _headers.add('Accept', accept_content_type)
         method = 'patch'.upper()
-        _headers.add('Content-Type', content_type)
-    
-        if body is schemas.unset:
-            raise exceptions.ApiValueError(
-                'The required body parameter has an invalid value of: unset. Set a valid value instead')
-        _fields = None
-        _body = None
         request_before_hook(
             resource_path=used_path,
             method=method,
             configuration=self.api_client.configuration,
             path_template='/projects/{id}/feedback-types',
-            body=body,
             auth_settings=_auth,
             headers=_headers,
         )
-        serialized_data = request_body_projects_update_feedback_types_request.serialize(body, content_type)
-        if 'fields' in serialized_data:
-            _fields = serialized_data['fields']
-        elif 'body' in serialized_data:
-            _body = serialized_data['body']
     
         response = await self.api_client.async_call_api(
             resource_path=used_path,
             method=method,
             headers=_headers,
-            fields=_fields,
-            serialized_body=_body,
-            body=body,
             auth_settings=_auth,
             timeout=timeout,
             **kwargs
@@ -287,12 +249,10 @@ class BaseApi(api_client.Api):
 
     def _update_feedback_types_oapg(
         self,
-        body: typing.Any = None,
             path_params: typing.Optional[dict] = {},
         skip_deserialization: bool = True,
         timeout: typing.Optional[typing.Union[float, typing.Tuple]] = None,
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
-        content_type: str = 'application/json',
         stream: bool = False,
     ) -> typing.Union[
         ApiResponseFor200,
@@ -326,35 +286,19 @@ class BaseApi(api_client.Api):
             for accept_content_type in accept_content_types:
                 _headers.add('Accept', accept_content_type)
         method = 'patch'.upper()
-        _headers.add('Content-Type', content_type)
-    
-        if body is schemas.unset:
-            raise exceptions.ApiValueError(
-                'The required body parameter has an invalid value of: unset. Set a valid value instead')
-        _fields = None
-        _body = None
         request_before_hook(
             resource_path=used_path,
             method=method,
             configuration=self.api_client.configuration,
             path_template='/projects/{id}/feedback-types',
-            body=body,
             auth_settings=_auth,
             headers=_headers,
         )
-        serialized_data = request_body_projects_update_feedback_types_request.serialize(body, content_type)
-        if 'fields' in serialized_data:
-            _fields = serialized_data['fields']
-        elif 'body' in serialized_data:
-            _body = serialized_data['body']
     
         response = self.api_client.call_api(
             resource_path=used_path,
             method=method,
             headers=_headers,
-            fields=_fields,
-            serialized_body=_body,
-            body=body,
             auth_settings=_auth,
             timeout=timeout,
         )
@@ -386,9 +330,9 @@ class BaseApi(api_client.Api):
 class UpdateFeedbackTypesRaw(BaseApi):
     # this class is used by api classes that refer to endpoints with operationId fn names
 
+    @api_client.DeprecationWarningOnce(prefix="projects")
     async def aupdate_feedback_types(
         self,
-        body: ProjectsUpdateFeedbackTypesRequest,
         id: str,
         **kwargs,
     ) -> typing.Union[
@@ -397,72 +341,66 @@ class UpdateFeedbackTypesRaw(BaseApi):
         AsyncGeneratorResponse,
     ]:
         args = self._update_feedback_types_mapped_args(
-            body=body,
             id=id,
         )
         return await self._aupdate_feedback_types_oapg(
-            body=args.body,
             path_params=args.path,
             **kwargs,
         )
     
+    @api_client.DeprecationWarningOnce(prefix="projects")
     def update_feedback_types(
         self,
-        body: ProjectsUpdateFeedbackTypesRequest,
         id: str,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
         args = self._update_feedback_types_mapped_args(
-            body=body,
             id=id,
         )
         return self._update_feedback_types_oapg(
-            body=args.body,
             path_params=args.path,
         )
 
 class UpdateFeedbackTypes(BaseApi):
 
+    @api_client.DeprecationWarningOnce(prefix="projects")
     async def aupdate_feedback_types(
         self,
-        body: ProjectsUpdateFeedbackTypesRequest,
         id: str,
         validate: bool = False,
         **kwargs,
-    ) -> FeedbackTypesPydantic:
+    ) -> Dictionary:
         raw_response = await self.raw.aupdate_feedback_types(
-            body=body,
             id=id,
             **kwargs,
         )
         if validate:
-            return RootModel[FeedbackTypesPydantic](raw_response.body).root
-        return api_client.construct_model_instance(FeedbackTypesPydantic, raw_response.body)
+            return Dictionary(**raw_response.body)
+        return api_client.construct_model_instance(Dictionary, raw_response.body)
     
     
+    @api_client.DeprecationWarningOnce(prefix="projects")
     def update_feedback_types(
         self,
-        body: ProjectsUpdateFeedbackTypesRequest,
         id: str,
         validate: bool = False,
-    ) -> FeedbackTypesPydantic:
+    ) -> Dictionary:
         raw_response = self.raw.update_feedback_types(
-            body=body,
             id=id,
         )
         if validate:
-            return RootModel[FeedbackTypesPydantic](raw_response.body).root
-        return api_client.construct_model_instance(FeedbackTypesPydantic, raw_response.body)
+            return Dictionary(**raw_response.body)
+        return api_client.construct_model_instance(Dictionary, raw_response.body)
 
 
 class ApiForpatch(BaseApi):
     # this class is used by api classes that refer to endpoints by path and http method names
 
+    @api_client.DeprecationWarningOnce(prefix="projects")
     async def apatch(
         self,
-        body: ProjectsUpdateFeedbackTypesRequest,
         id: str,
         **kwargs,
     ) -> typing.Union[
@@ -471,29 +409,25 @@ class ApiForpatch(BaseApi):
         AsyncGeneratorResponse,
     ]:
         args = self._update_feedback_types_mapped_args(
-            body=body,
             id=id,
         )
         return await self._aupdate_feedback_types_oapg(
-            body=args.body,
             path_params=args.path,
             **kwargs,
         )
     
+    @api_client.DeprecationWarningOnce(prefix="projects")
     def patch(
         self,
-        body: ProjectsUpdateFeedbackTypesRequest,
         id: str,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
         args = self._update_feedback_types_mapped_args(
-            body=body,
             id=id,
         )
         return self._update_feedback_types_oapg(
-            body=args.body,
             path_params=args.path,
         )
 

@@ -68,9 +68,6 @@ class OptionalProjectModelConfigRequest(TypedDict, total=False):
     # Unique project ID
     project_id: str
 
-    # If specified, the model config will be added to this experiment. Experiments are used for A/B testing and optimizing hyperparameters.
-    experiment: str
-
     # Prompt template that will take your specified inputs to form your final request to the provider model. NB: Input variables within the prompt template should be specified with syntax: {{INPUT_NAME}}.
     prompt_template: str
 

@@ -21,7 +21,7 @@ class RequiredFeedback(TypedDict):
     type: typing.Union[FeedbackType, str]
 
     # The feedback value to set. This would be the appropriate text for 'correction' or 'comment', or a label to apply for 'rating', 'action', or 'issue'.
-    value: typing.Union[typing.Union[int, float], str]
+    value: typing.Union[bool, typing.Union[int, float], typing.List[str], str]
 
 
 class OptionalFeedback(TypedDict, total=False):

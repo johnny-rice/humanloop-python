@@ -14,7 +14,6 @@ import typing
 from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 
-from humanloop.type.feedback_type_request import FeedbackTypeRequest
 
 class RequiredCreateProjectRequest(TypedDict):
     # Unique project name.
@@ -22,9 +21,6 @@ class RequiredCreateProjectRequest(TypedDict):
 
 
 class OptionalCreateProjectRequest(TypedDict, total=False):
-    # Feedback types to be created.
-    feedback_types: typing.List[FeedbackTypeRequest]
-
     # ID of directory to assign project to. Starts with `dir_`. If not provided, the project will be created in the root directory.
     directory_id: str
 

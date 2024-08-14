@@ -10,7 +10,6 @@
 
 from humanloop.paths.chat.post import Create
 from humanloop.paths.chat_deployed.post import CreateDeployed
-from humanloop.paths.chat_experiment.post import CreateExperiment
 from humanloop.paths.chat_model_config.post import CreateModelConfig
 from humanloop.apis.tags.chats_api_raw import ChatsApiRaw
 
@@ -18,7 +17,6 @@ from humanloop.apis.tags.chats_api_raw import ChatsApiRaw
 class ChatsApiGenerated(
     Create,
     CreateDeployed,
-    CreateExperiment,
     CreateModelConfig,
 ):
     """NOTE:

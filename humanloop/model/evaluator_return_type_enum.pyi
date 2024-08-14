@@ -40,3 +40,15 @@ class EvaluatorReturnTypeEnum(
     @schemas.classproperty
     def NUMBER(cls):
         return cls("number")
+    
+    @schemas.classproperty
+    def SELECT(cls):
+        return cls("select")
+    
+    @schemas.classproperty
+    def MULTI_SELECT(cls):
+        return cls("multi_select")
+    
+    @schemas.classproperty
+    def TEXT(cls):
+        return cls("text")

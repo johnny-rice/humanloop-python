@@ -10,7 +10,6 @@
 
 from humanloop.paths.completion.post import Create
 from humanloop.paths.completion_deployed.post import CreateDeployed
-from humanloop.paths.completion_experiment.post import CreateExperiment
 from humanloop.paths.completion_model_config.post import CreateModelConfig
 from humanloop.apis.tags.completions_api_raw import CompletionsApiRaw
 
@@ -18,7 +17,6 @@ from humanloop.apis.tags.completions_api_raw import CompletionsApiRaw
 class CompletionsApiGenerated(
     Create,
     CreateDeployed,
-    CreateExperiment,
     CreateModelConfig,
 ):
     """NOTE:

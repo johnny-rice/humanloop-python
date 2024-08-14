@@ -20,7 +20,6 @@ from humanloop.pydantic.config_response import ConfigResponse
 from humanloop.pydantic.evaluation_result_response import EvaluationResultResponse
 from humanloop.pydantic.feedback_response import FeedbackResponse
 from humanloop.pydantic.log_response_batch_ids import LogResponseBatchIds
-from humanloop.pydantic.metric_value_response import MetricValueResponse
 from humanloop.pydantic.observability_status import ObservabilityStatus
 from humanloop.pydantic.tool_choice import ToolChoice
 from humanloop.pydantic.tool_result_response import ToolResultResponse
@@ -73,16 +72,13 @@ class LogResponse(BaseModel):
     # Unique user-provided string identifying the datapoint.
     reference_id: typing.Optional[str] = Field(None, alias='reference_id')
 
-    # Unique ID of an experiment trial to associate to the log.
-    trial_id: typing.Optional[str] = Field(None, alias='trial_id')
-
     # The messages passed to the to provider chat endpoint.
     messages: typing.Optional[typing.List[ChatMessageWithToolCall]] = Field(None, alias='messages')
 
     # Generated output from your model for the provided inputs. Can be `None` if logging an error, or if logging a parent datapoint with the intention to populate it later
     output: typing.Optional[str] = Field(None, alias='output')
 
-    judgment: typing.Optional[typing.Union[bool, typing.Union[int, float]]] = Field(None, alias='judgment')
+    judgment: typing.Optional[typing.Union[bool, typing.Union[int, float], typing.List[str], str]] = Field(None, alias='judgment')
 
     # Unique ID of a config to associate to the log.
     config_id: typing.Optional[str] = Field(None, alias='config_id')
@@ -139,8 +135,6 @@ class LogResponse(BaseModel):
 
     # Reason the generation finished.
     finish_reason: typing.Optional[str] = Field(None, alias='finish_reason')
-
-    metric_values: typing.Optional[typing.List[MetricValueResponse]] = Field(None, alias='metric_values')
 
     tools: typing.Optional[typing.List[ToolResultResponse]] = Field(None, alias='tools')
 

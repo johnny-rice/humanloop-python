@@ -22,7 +22,7 @@ class FeedbackRequest(BaseModel):
     type: typing.Union[FeedbackType, str] = Field(alias='type')
 
     # The feedback value to be set. This field should be left blank when unsetting 'rating', 'correction' or 'comment', but is required otherwise.
-    value: typing.Optional[str] = Field(None, alias='value')
+    value: typing.Optional[typing.Union[bool, typing.Union[int, float], typing.List[str], str]] = Field(None, alias='value')
 
     # ID to associate the feedback to a previously logged datapoint.
     data_id: typing.Optional[str] = Field(None, alias='data_id')

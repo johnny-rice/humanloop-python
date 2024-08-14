@@ -38,12 +38,6 @@ class EnvironmentProjectConfigResponse(BaseModel):
     # A friendly display name for the model config.
     model_config_name_: typing.Optional[str] = Field(None, alias='model_config_name')
 
-    # String ID of experiment. Starts with `exp_`.
-    experiment_id: typing.Optional[str] = Field(None, alias='experiment_id')
-
-    # Display name of experiment.
-    experiment_name: typing.Optional[str] = Field(None, alias='experiment_name')
-
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

@@ -75,7 +75,71 @@ class FeedbackRequest(
                         _configuration=_configuration,
                         **kwargs,
                     )
-            value = schemas.StrSchema
+            
+            
+            class value(
+                schemas.ComposedSchema,
+            ):
+            
+            
+                class MetaOapg:
+                    any_of_0 = schemas.BoolSchema
+                    any_of_1 = schemas.NumberSchema
+                    
+                    
+                    class any_of_2(
+                        schemas.ListSchema
+                    ):
+                    
+                    
+                        class MetaOapg:
+                            items = schemas.StrSchema
+                    
+                        def __new__(
+                            cls,
+                            arg: typing.Union[typing.Tuple[typing.Union[MetaOapg.items, str, ]], typing.List[typing.Union[MetaOapg.items, str, ]]],
+                            _configuration: typing.Optional[schemas.Configuration] = None,
+                        ) -> 'any_of_2':
+                            return super().__new__(
+                                cls,
+                                arg,
+                                _configuration=_configuration,
+                            )
+                    
+                        def __getitem__(self, i: int) -> MetaOapg.items:
+                            return super().__getitem__(i)
+                    items = schemas.StrSchema
+                    
+                    @classmethod
+                    @functools.lru_cache()
+                    def any_of(cls):
+                        # we need this here to make our import statements work
+                        # we must store _composed_schemas in here so the code is only run
+                        # when we invoke this method. If we kept this at the class
+                        # level we would get an error because the class level
+                        # code would be run when this module is imported, and these composed
+                        # classes don't exist yet because their module has not finished
+                        # loading
+                        return [
+                            cls.any_of_0,
+                            cls.any_of_1,
+                            cls.any_of_2,
+                            cls.items,
+                        ]
+            
+            
+                def __new__(
+                    cls,
+                    *args: typing.Union[dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
+                    _configuration: typing.Optional[schemas.Configuration] = None,
+                    **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
+                ) -> 'value':
+                    return super().__new__(
+                        cls,
+                        *args,
+                        _configuration=_configuration,
+                        **kwargs,
+                    )
             data_id = schemas.StrSchema
             user = schemas.StrSchema
             created_at = schemas.DateTimeSchema
@@ -146,7 +210,7 @@ class FeedbackRequest(
         cls,
         *args: typing.Union[dict, frozendict.frozendict, ],
         type: typing.Union[MetaOapg.properties.type, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
-        value: typing.Union[MetaOapg.properties.value, str, schemas.Unset] = schemas.unset,
+        value: typing.Union[MetaOapg.properties.value, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, schemas.Unset] = schemas.unset,
         data_id: typing.Union[MetaOapg.properties.data_id, str, schemas.Unset] = schemas.unset,
         user: typing.Union[MetaOapg.properties.user, str, schemas.Unset] = schemas.unset,
         created_at: typing.Union[MetaOapg.properties.created_at, str, datetime, schemas.Unset] = schemas.unset,

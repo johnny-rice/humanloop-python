@@ -11,14 +11,12 @@
 
 from humanloop.paths.chat.post import CreateRaw
 from humanloop.paths.chat_deployed.post import CreateDeployedRaw
-from humanloop.paths.chat_experiment.post import CreateExperimentRaw
 from humanloop.paths.chat_model_config.post import CreateModelConfigRaw
 
 
 class ChatsApiRaw(
     CreateRaw,
     CreateDeployedRaw,
-    CreateExperimentRaw,
     CreateModelConfigRaw,
 ):
     """NOTE:

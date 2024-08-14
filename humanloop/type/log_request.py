@@ -59,21 +59,18 @@ class OptionalLogRequest(TypedDict, total=False):
     # A unique string to reference the datapoint. Allows you to log nested datapoints with your internal system IDs by passing the same reference ID as `parent_id` in a subsequent log request.
     reference_id: str
 
-    # Unique ID of an experiment trial to associate to the log.
-    trial_id: str
-
     # The messages passed to the to provider chat endpoint.
     messages: typing.List[ChatMessageWithToolCall]
 
     # Generated output from your model for the provided inputs. Can be `None` if logging an error, or if logging a parent datapoint with the intention to populate it later
     output: str
 
-    judgment: typing.Union[bool, typing.Union[int, float]]
+    judgment: typing.Union[bool, typing.Union[int, float], typing.List[str], str]
 
     # Unique ID of a config to associate to the log.
     config_id: str
 
-    # The model config used for this generation. Required unless `config_id` or `trial_id` is provided.
+    # The model config used for this generation. Required unless `config_id` is provided.
     config: typing.Union[ModelConfigRequest, ToolConfigRequest]
 
     # The environment name used to create the log.

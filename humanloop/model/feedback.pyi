@@ -84,7 +84,31 @@ class Feedback(
             
             
                 class MetaOapg:
-                    any_of_0 = schemas.NumberSchema
+                    any_of_0 = schemas.BoolSchema
+                    any_of_1 = schemas.NumberSchema
+                    
+                    
+                    class any_of_2(
+                        schemas.ListSchema
+                    ):
+                    
+                    
+                        class MetaOapg:
+                            items = schemas.StrSchema
+                    
+                        def __new__(
+                            cls,
+                            arg: typing.Union[typing.Tuple[typing.Union[MetaOapg.items, str, ]], typing.List[typing.Union[MetaOapg.items, str, ]]],
+                            _configuration: typing.Optional[schemas.Configuration] = None,
+                        ) -> 'any_of_2':
+                            return super().__new__(
+                                cls,
+                                arg,
+                                _configuration=_configuration,
+                            )
+                    
+                        def __getitem__(self, i: int) -> MetaOapg.items:
+                            return super().__getitem__(i)
                     items = schemas.StrSchema
                     
                     @classmethod
@@ -99,6 +123,8 @@ class Feedback(
                         # loading
                         return [
                             cls.any_of_0,
+                            cls.any_of_1,
+                            cls.any_of_2,
                             cls.items,
                         ]
             

@@ -32,10 +32,12 @@ class EnvironmentProjectConfigRequest(
 
 
     class MetaOapg:
+        required = {
+            "config_id",
+        }
         
         class properties:
             config_id = schemas.StrSchema
-            experiment_id = schemas.StrSchema
             
             
             class environments(
@@ -64,15 +66,13 @@ class EnvironmentProjectConfigRequest(
                     return super().__getitem__(i)
             __annotations__ = {
                 "config_id": config_id,
-                "experiment_id": experiment_id,
                 "environments": environments,
             }
     
-    @typing.overload
-    def __getitem__(self, name: typing_extensions.Literal["config_id"]) -> MetaOapg.properties.config_id: ...
+    config_id: MetaOapg.properties.config_id
     
     @typing.overload
-    def __getitem__(self, name: typing_extensions.Literal["experiment_id"]) -> MetaOapg.properties.experiment_id: ...
+    def __getitem__(self, name: typing_extensions.Literal["config_id"]) -> MetaOapg.properties.config_id: ...
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["environments"]) -> MetaOapg.properties.environments: ...
@@ -80,16 +80,13 @@ class EnvironmentProjectConfigRequest(
     @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["config_id", "experiment_id", "environments", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["config_id", "environments", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["config_id"]) -> typing.Union[MetaOapg.properties.config_id, schemas.Unset]: ...
-    
-    @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["experiment_id"]) -> typing.Union[MetaOapg.properties.experiment_id, schemas.Unset]: ...
+    def get_item_oapg(self, name: typing_extensions.Literal["config_id"]) -> MetaOapg.properties.config_id: ...
     
     @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["environments"]) -> typing.Union[MetaOapg.properties.environments, schemas.Unset]: ...
@@ -97,15 +94,14 @@ class EnvironmentProjectConfigRequest(
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["config_id", "experiment_id", "environments", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["config_id", "environments", ], str]):
         return super().get_item_oapg(name)
     
 
     def __new__(
         cls,
         *args: typing.Union[dict, frozendict.frozendict, ],
-        config_id: typing.Union[MetaOapg.properties.config_id, str, schemas.Unset] = schemas.unset,
-        experiment_id: typing.Union[MetaOapg.properties.experiment_id, str, schemas.Unset] = schemas.unset,
+        config_id: typing.Union[MetaOapg.properties.config_id, str, ],
         environments: typing.Union[MetaOapg.properties.environments, list, tuple, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
@@ -114,7 +110,6 @@ class EnvironmentProjectConfigRequest(
             cls,
             *args,
             config_id=config_id,
-            experiment_id=experiment_id,
             environments=environments,
             _configuration=_configuration,
             **kwargs,

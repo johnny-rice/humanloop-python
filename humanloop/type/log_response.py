@@ -19,7 +19,6 @@ from humanloop.type.config_response import ConfigResponse
 from humanloop.type.evaluation_result_response import EvaluationResultResponse
 from humanloop.type.feedback_response import FeedbackResponse
 from humanloop.type.log_response_batch_ids import LogResponseBatchIds
-from humanloop.type.metric_value_response import MetricValueResponse
 from humanloop.type.observability_status import ObservabilityStatus
 from humanloop.type.tool_choice import ToolChoice
 from humanloop.type.tool_result_response import ToolResultResponse
@@ -74,16 +73,13 @@ class OptionalLogResponse(TypedDict, total=False):
     # Unique user-provided string identifying the datapoint.
     reference_id: str
 
-    # Unique ID of an experiment trial to associate to the log.
-    trial_id: str
-
     # The messages passed to the to provider chat endpoint.
     messages: typing.List[ChatMessageWithToolCall]
 
     # Generated output from your model for the provided inputs. Can be `None` if logging an error, or if logging a parent datapoint with the intention to populate it later
     output: str
 
-    judgment: typing.Union[bool, typing.Union[int, float]]
+    judgment: typing.Union[bool, typing.Union[int, float], typing.List[str], str]
 
     # Unique ID of a config to associate to the log.
     config_id: str
@@ -140,8 +136,6 @@ class OptionalLogResponse(TypedDict, total=False):
 
     # Reason the generation finished.
     finish_reason: str
-
-    metric_values: typing.List[MetricValueResponse]
 
     tools: typing.List[ToolResultResponse]
 

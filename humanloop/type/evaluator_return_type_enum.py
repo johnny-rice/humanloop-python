@@ -15,4 +15,4 @@ from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 
 
-EvaluatorReturnTypeEnum = Literal["boolean", "number"]
+EvaluatorReturnTypeEnum = Literal["boolean", "number", "select", "multi_select", "text"]

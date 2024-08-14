@@ -40,7 +40,7 @@ class OptionalEvaluationResultResponse(TypedDict, total=False):
 
     version_id: str
 
-    value: typing.Union[bool, typing.Union[int, float]]
+    value: typing.Union[bool, typing.Union[int, float], str, typing.List[str]]
 
     error: str
 

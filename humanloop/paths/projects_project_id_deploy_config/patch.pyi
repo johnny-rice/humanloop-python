@@ -136,9 +136,8 @@ class BaseApi(api_client.Api):
 
     def _deploy_config_mapped_args(
         self,
+        config_id: str,
         project_id: str,
-        config_id: typing.Optional[str] = None,
-        experiment_id: typing.Optional[str] = None,
         environments: typing.Optional[typing.List[EnvironmentRequest]] = None,
     ) -> api_client.MappedArgs:
         args: api_client.MappedArgs = api_client.MappedArgs()
@@ -146,8 +145,6 @@ class BaseApi(api_client.Api):
         _body = {}
         if config_id is not None:
             _body["config_id"] = config_id
-        if experiment_id is not None:
-            _body["experiment_id"] = experiment_id
         if environments is not None:
             _body["environments"] = environments
         args.body = _body
@@ -390,9 +387,8 @@ class DeployConfigRaw(BaseApi):
 
     async def adeploy_config(
         self,
+        config_id: str,
         project_id: str,
-        config_id: typing.Optional[str] = None,
-        experiment_id: typing.Optional[str] = None,
         environments: typing.Optional[typing.List[EnvironmentRequest]] = None,
         **kwargs,
     ) -> typing.Union[
@@ -401,9 +397,8 @@ class DeployConfigRaw(BaseApi):
         AsyncGeneratorResponse,
     ]:
         args = self._deploy_config_mapped_args(
-            project_id=project_id,
             config_id=config_id,
-            experiment_id=experiment_id,
+            project_id=project_id,
             environments=environments,
         )
         return await self._adeploy_config_oapg(
@@ -414,18 +409,16 @@ class DeployConfigRaw(BaseApi):
     
     def deploy_config(
         self,
+        config_id: str,
         project_id: str,
-        config_id: typing.Optional[str] = None,
-        experiment_id: typing.Optional[str] = None,
         environments: typing.Optional[typing.List[EnvironmentRequest]] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
         args = self._deploy_config_mapped_args(
-            project_id=project_id,
             config_id=config_id,
-            experiment_id=experiment_id,
+            project_id=project_id,
             environments=environments,
         )
         return self._deploy_config_oapg(
@@ -437,17 +430,15 @@ class DeployConfig(BaseApi):
 
     async def adeploy_config(
         self,
+        config_id: str,
         project_id: str,
-        config_id: typing.Optional[str] = None,
-        experiment_id: typing.Optional[str] = None,
         environments: typing.Optional[typing.List[EnvironmentRequest]] = None,
         validate: bool = False,
         **kwargs,
     ) -> ProjectsDeployConfigToEnvironmentsResponsePydantic:
         raw_response = await self.raw.adeploy_config(
-            project_id=project_id,
             config_id=config_id,
-            experiment_id=experiment_id,
+            project_id=project_id,
             environments=environments,
             **kwargs,
         )
@@ -458,16 +449,14 @@ class DeployConfig(BaseApi):
     
     def deploy_config(
         self,
+        config_id: str,
         project_id: str,
-        config_id: typing.Optional[str] = None,
-        experiment_id: typing.Optional[str] = None,
         environments: typing.Optional[typing.List[EnvironmentRequest]] = None,
         validate: bool = False,
     ) -> ProjectsDeployConfigToEnvironmentsResponsePydantic:
         raw_response = self.raw.deploy_config(
-            project_id=project_id,
             config_id=config_id,
-            experiment_id=experiment_id,
+            project_id=project_id,
             environments=environments,
         )
         if validate:
@@ -480,9 +469,8 @@ class ApiForpatch(BaseApi):
 
     async def apatch(
         self,
+        config_id: str,
         project_id: str,
-        config_id: typing.Optional[str] = None,
-        experiment_id: typing.Optional[str] = None,
         environments: typing.Optional[typing.List[EnvironmentRequest]] = None,
         **kwargs,
     ) -> typing.Union[
@@ -491,9 +479,8 @@ class ApiForpatch(BaseApi):
         AsyncGeneratorResponse,
     ]:
         args = self._deploy_config_mapped_args(
-            project_id=project_id,
             config_id=config_id,
-            experiment_id=experiment_id,
+            project_id=project_id,
             environments=environments,
         )
         return await self._adeploy_config_oapg(
@@ -504,18 +491,16 @@ class ApiForpatch(BaseApi):
     
     def patch(
         self,
+        config_id: str,
         project_id: str,
-        config_id: typing.Optional[str] = None,
-        experiment_id: typing.Optional[str] = None,
         environments: typing.Optional[typing.List[EnvironmentRequest]] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
         args = self._deploy_config_mapped_args(
-            project_id=project_id,
             config_id=config_id,
-            experiment_id=experiment_id,
+            project_id=project_id,
             environments=environments,
         )
         return self._deploy_config_oapg(

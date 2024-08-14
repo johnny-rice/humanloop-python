@@ -3,11 +3,9 @@ import typing_extensions
 from humanloop.paths import PathValues
 from humanloop.apis.paths.chat import Chat
 from humanloop.apis.paths.chat_deployed import ChatDeployed
-from humanloop.apis.paths.chat_experiment import ChatExperiment
 from humanloop.apis.paths.chat_model_config import ChatModelConfig
 from humanloop.apis.paths.completion import Completion
 from humanloop.apis.paths.completion_deployed import CompletionDeployed
-from humanloop.apis.paths.completion_experiment import CompletionExperiment
 from humanloop.apis.paths.completion_model_config import CompletionModelConfig
 from humanloop.apis.paths.datapoints_id import DatapointsId
 from humanloop.apis.paths.datapoints import Datapoints
@@ -37,7 +35,6 @@ from humanloop.apis.paths.projects import Projects
 from humanloop.apis.paths.projects_id import ProjectsId
 from humanloop.apis.paths.projects_id_configs import ProjectsIdConfigs
 from humanloop.apis.paths.projects_id_active_config import ProjectsIdActiveConfig
-from humanloop.apis.paths.projects_id_active_experiment import ProjectsIdActiveExperiment
 from humanloop.apis.paths.projects_id_feedback_types import ProjectsIdFeedbackTypes
 from humanloop.apis.paths.projects_id_export import ProjectsIdExport
 from humanloop.apis.paths.projects_id_deployed_configs import ProjectsIdDeployedConfigs
@@ -51,11 +48,9 @@ PathToApi = typing_extensions.TypedDict(
     {
         PathValues.CHAT: Chat,
         PathValues.CHATDEPLOYED: ChatDeployed,
-        PathValues.CHATEXPERIMENT: ChatExperiment,
         PathValues.CHATMODELCONFIG: ChatModelConfig,
         PathValues.COMPLETION: Completion,
         PathValues.COMPLETIONDEPLOYED: CompletionDeployed,
-        PathValues.COMPLETIONEXPERIMENT: CompletionExperiment,
         PathValues.COMPLETIONMODELCONFIG: CompletionModelConfig,
         PathValues.DATAPOINTS_ID: DatapointsId,
         PathValues.DATAPOINTS: Datapoints,
@@ -85,7 +80,6 @@ PathToApi = typing_extensions.TypedDict(
         PathValues.PROJECTS_ID: ProjectsId,
         PathValues.PROJECTS_ID_CONFIGS: ProjectsIdConfigs,
         PathValues.PROJECTS_ID_ACTIVECONFIG: ProjectsIdActiveConfig,
-        PathValues.PROJECTS_ID_ACTIVEEXPERIMENT: ProjectsIdActiveExperiment,
         PathValues.PROJECTS_ID_FEEDBACKTYPES: ProjectsIdFeedbackTypes,
         PathValues.PROJECTS_ID_EXPORT: ProjectsIdExport,
         PathValues.PROJECTS_ID_DEPLOYEDCONFIGS: ProjectsIdDeployedConfigs,
@@ -100,11 +94,9 @@ path_to_api = PathToApi(
     {
         PathValues.CHAT: Chat,
         PathValues.CHATDEPLOYED: ChatDeployed,
-        PathValues.CHATEXPERIMENT: ChatExperiment,
         PathValues.CHATMODELCONFIG: ChatModelConfig,
         PathValues.COMPLETION: Completion,
         PathValues.COMPLETIONDEPLOYED: CompletionDeployed,
-        PathValues.COMPLETIONEXPERIMENT: CompletionExperiment,
         PathValues.COMPLETIONMODELCONFIG: CompletionModelConfig,
         PathValues.DATAPOINTS_ID: DatapointsId,
         PathValues.DATAPOINTS: Datapoints,
@@ -134,7 +126,6 @@ path_to_api = PathToApi(
         PathValues.PROJECTS_ID: ProjectsId,
         PathValues.PROJECTS_ID_CONFIGS: ProjectsIdConfigs,
         PathValues.PROJECTS_ID_ACTIVECONFIG: ProjectsIdActiveConfig,
-        PathValues.PROJECTS_ID_ACTIVEEXPERIMENT: ProjectsIdActiveExperiment,
         PathValues.PROJECTS_ID_FEEDBACKTYPES: ProjectsIdFeedbackTypes,
         PathValues.PROJECTS_ID_EXPORT: ProjectsIdExport,
         PathValues.PROJECTS_ID_DEPLOYEDCONFIGS: ProjectsIdDeployedConfigs,

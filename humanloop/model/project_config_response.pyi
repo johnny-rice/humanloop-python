@@ -51,34 +51,7 @@ class ProjectConfigResponse(
             @staticmethod
             def config() -> typing.Type['ConfigResponse']:
                 return ConfigResponse
-            
-            
-            class feedback_stats(
-                schemas.ListSchema
-            ):
-            
-            
-                class MetaOapg:
-                    
-                    @staticmethod
-                    def items() -> typing.Type['ProjectModelConfigFeedbackStatsResponse']:
-                        return ProjectModelConfigFeedbackStatsResponse
-            
-                def __new__(
-                    cls,
-                    arg: typing.Union[typing.Tuple['ProjectModelConfigFeedbackStatsResponse'], typing.List['ProjectModelConfigFeedbackStatsResponse']],
-                    _configuration: typing.Optional[schemas.Configuration] = None,
-                ) -> 'feedback_stats':
-                    return super().__new__(
-                        cls,
-                        arg,
-                        _configuration=_configuration,
-                    )
-            
-                def __getitem__(self, i: int) -> 'ProjectModelConfigFeedbackStatsResponse':
-                    return super().__getitem__(i)
             num_datapoints = schemas.IntSchema
-            experiment_id = schemas.StrSchema
             
             
             class evaluation_aggregates(
@@ -112,9 +85,7 @@ class ProjectConfigResponse(
                 "updated_at": updated_at,
                 "last_used": last_used,
                 "config": config,
-                "feedback_stats": feedback_stats,
                 "num_datapoints": num_datapoints,
-                "experiment_id": experiment_id,
                 "evaluation_aggregates": evaluation_aggregates,
             }
     
@@ -144,13 +115,7 @@ class ProjectConfigResponse(
     def __getitem__(self, name: typing_extensions.Literal["config"]) -> 'ConfigResponse': ...
     
     @typing.overload
-    def __getitem__(self, name: typing_extensions.Literal["feedback_stats"]) -> MetaOapg.properties.feedback_stats: ...
-    
-    @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["num_datapoints"]) -> MetaOapg.properties.num_datapoints: ...
-    
-    @typing.overload
-    def __getitem__(self, name: typing_extensions.Literal["experiment_id"]) -> MetaOapg.properties.experiment_id: ...
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["evaluation_aggregates"]) -> MetaOapg.properties.evaluation_aggregates: ...
@@ -158,7 +123,7 @@ class ProjectConfigResponse(
     @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["project_id", "project_name", "created_at", "updated_at", "last_used", "config", "feedback_stats", "num_datapoints", "experiment_id", "evaluation_aggregates", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["project_id", "project_name", "created_at", "updated_at", "last_used", "config", "num_datapoints", "evaluation_aggregates", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -182,13 +147,7 @@ class ProjectConfigResponse(
     def get_item_oapg(self, name: typing_extensions.Literal["config"]) -> 'ConfigResponse': ...
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["feedback_stats"]) -> typing.Union[MetaOapg.properties.feedback_stats, schemas.Unset]: ...
-    
-    @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["num_datapoints"]) -> typing.Union[MetaOapg.properties.num_datapoints, schemas.Unset]: ...
-    
-    @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["experiment_id"]) -> typing.Union[MetaOapg.properties.experiment_id, schemas.Unset]: ...
     
     @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["evaluation_aggregates"]) -> typing.Union[MetaOapg.properties.evaluation_aggregates, schemas.Unset]: ...
@@ -196,7 +155,7 @@ class ProjectConfigResponse(
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["project_id", "project_name", "created_at", "updated_at", "last_used", "config", "feedback_stats", "num_datapoints", "experiment_id", "evaluation_aggregates", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["project_id", "project_name", "created_at", "updated_at", "last_used", "config", "num_datapoints", "evaluation_aggregates", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -209,9 +168,7 @@ class ProjectConfigResponse(
         created_at: typing.Union[MetaOapg.properties.created_at, str, datetime, ],
         project_name: typing.Union[MetaOapg.properties.project_name, str, ],
         config: 'ConfigResponse',
-        feedback_stats: typing.Union[MetaOapg.properties.feedback_stats, list, tuple, schemas.Unset] = schemas.unset,
         num_datapoints: typing.Union[MetaOapg.properties.num_datapoints, decimal.Decimal, int, schemas.Unset] = schemas.unset,
-        experiment_id: typing.Union[MetaOapg.properties.experiment_id, str, schemas.Unset] = schemas.unset,
         evaluation_aggregates: typing.Union[MetaOapg.properties.evaluation_aggregates, list, tuple, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
@@ -225,9 +182,7 @@ class ProjectConfigResponse(
             created_at=created_at,
             project_name=project_name,
             config=config,
-            feedback_stats=feedback_stats,
             num_datapoints=num_datapoints,
-            experiment_id=experiment_id,
             evaluation_aggregates=evaluation_aggregates,
             _configuration=_configuration,
             **kwargs,
@@ -235,4 +190,3 @@ class ProjectConfigResponse(
 
 from humanloop.model.config_response import ConfigResponse
 from humanloop.model.model_config_evaluator_aggregate_response import ModelConfigEvaluatorAggregateResponse
-from humanloop.model.project_model_config_feedback_stats_response import ProjectModelConfigFeedbackStatsResponse

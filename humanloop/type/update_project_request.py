@@ -14,7 +14,6 @@ import typing
 from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 
-from humanloop.type.positive_label import PositiveLabel
 
 class RequiredUpdateProjectRequest(TypedDict):
     pass
@@ -23,14 +22,8 @@ class OptionalUpdateProjectRequest(TypedDict, total=False):
     # The new unique project name. Caution, if you are using the project name as the unique identifier in your API calls, changing the name will break the calls.
     name: str
 
-    # ID for an experiment to set as the project's active deployment. Starts with 'exp_'. At most one of 'active_experiment_id' and 'active_model_config_id' can be set.
-    active_experiment_id: str
-
-    # ID for a config to set as the project's active deployment. Starts with 'config_'. At most one of 'active_experiment_id' and 'active_config_id' can be set.
+    # ID for a config to set as the project's active deployment. Starts with 'config_'. 
     active_config_id: str
-
-    # The full list of labels to treat as positive user feedback.
-    positive_labels: typing.List[PositiveLabel]
 
     # ID of directory to assign project to. Starts with `dir_`.
     directory_id: str

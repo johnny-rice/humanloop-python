@@ -53,11 +53,9 @@
 - [Reference](#reference)
   * [`humanloop.chat`](#humanloopchat)
   * [`humanloop.chat_deployed`](#humanloopchat_deployed)
-  * [`humanloop.chat_experiment`](#humanloopchat_experiment)
   * [`humanloop.chat_model_config`](#humanloopchat_model_config)
   * [`humanloop.complete`](#humanloopcomplete)
   * [`humanloop.complete_deployed`](#humanloopcomplete_deployed)
-  * [`humanloop.complete_experiment`](#humanloopcomplete_experiment)
   * [`humanloop.complete_model_configuration`](#humanloopcomplete_model_configuration)
   * [`humanloop.datapoints.delete`](#humanloopdatapointsdelete)
   * [`humanloop.datapoints.get`](#humanloopdatapointsget)
@@ -99,7 +97,6 @@
   * [`humanloop.projects.create`](#humanloopprojectscreate)
   * [`humanloop.projects.create_feedback_type`](#humanloopprojectscreate_feedback_type)
   * [`humanloop.projects.deactivate_config`](#humanloopprojectsdeactivate_config)
-  * [`humanloop.projects.deactivate_experiment`](#humanloopprojectsdeactivate_experiment)
   * [`humanloop.projects.delete`](#humanloopprojectsdelete)
   * [`humanloop.projects.delete_deployed_config`](#humanloopprojectsdelete_deployed_config)
   * [`humanloop.projects.deploy_config`](#humanloopprojectsdeploy_config)
@@ -351,7 +348,7 @@ try:
         tool_choice="string_example",
         tool_call="string_example",
         response_format={
-            "type": "json_object",
+            "type": "string_example",
         },
     )
     pprint(create_response.body)
@@ -473,7 +470,7 @@ create_response = humanloop.chat(
     tool_choice="string_example",
     tool_call="string_example",
     response_format={
-        "type": "json_object",
+        "type": "string_example",
     },
 )
 ```
@@ -592,7 +589,7 @@ The format of the response. Only type json_object is currently supported for cha
 
 Get a chat response using the project's active deployment.
 
-The active deployment can be a specific model configuration or an experiment.
+The active deployment can be a specific model configuration.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
@@ -623,7 +620,7 @@ create_deployed_response = humanloop.chat_deployed(
     tool_choice="string_example",
     tool_call="string_example",
     response_format={
-        "type": "json_object",
+        "type": "string_example",
     },
     environment="string_example",
 )
@@ -738,154 +735,6 @@ The environment name used to create a chat response. If not specified, the defau
 
 ---
 
-### `humanloop.chat_experiment`<a id="humanloopchat_experiment"></a>
-
-Get a chat response for a specific experiment.
-
-#### 🛠️ Usage<a id="🛠️-usage"></a>
-
-```python
-create_experiment_response = humanloop.chat_experiment(
-    messages=[
-        {
-            "role": "user",
-        }
-    ],
-    experiment_id="string_example",
-    project="string_example",
-    project_id="string_example",
-    session_id="string_example",
-    session_reference_id="string_example",
-    parent_id="string_example",
-    parent_reference_id="string_example",
-    inputs={},
-    source="string_example",
-    metadata={},
-    save=True,
-    source_datapoint_id="string_example",
-    provider_api_keys={},
-    num_samples=1,
-    stream=False,
-    user="string_example",
-    seed=1,
-    return_inputs=True,
-    tool_choice="string_example",
-    tool_call="string_example",
-    response_format={
-        "type": "json_object",
-    },
-)
-```
-
-#### ⚙️ Parameters<a id="⚙️-parameters"></a>
-
-##### messages: List[`ChatMessageWithToolCall`]<a id="messages-listchatmessagewithtoolcall"></a>
-
-The messages passed to the to provider chat endpoint.
-
-##### experiment_id: `str`<a id="experiment_id-str"></a>
-
-If an experiment ID is provided a model configuration will be sampled from the experiments active model configurations.
-
-##### project: `str`<a id="project-str"></a>
-
-Unique project name. If no project exists with this name, a new project will be created.
-
-##### project_id: `str`<a id="project_id-str"></a>
-
-Unique ID of a project to associate to the log. Either this or `project` must be provided.
-
-##### session_id: `str`<a id="session_id-str"></a>
-
-ID of the session to associate the datapoint.
-
-##### session_reference_id: `str`<a id="session_reference_id-str"></a>
-
-A unique string identifying the session to associate the datapoint to. Allows you to log multiple datapoints to a session (using an ID kept by your internal systems) by passing the same `session_reference_id` in subsequent log requests. Specify at most one of this or `session_id`.
-
-##### parent_id: `str`<a id="parent_id-str"></a>
-
-ID associated to the parent datapoint in a session.
-
-##### parent_reference_id: `str`<a id="parent_reference_id-str"></a>
-
-A unique string identifying the previously-logged parent datapoint in a session. Allows you to log nested datapoints with your internal system IDs by passing the same reference ID as `parent_id` in a prior log request. Specify at most one of this or `parent_id`. Note that this cannot refer to a datapoint being logged in the same request.
-
-##### inputs: `Dict[str, Union[bool, date, datetime, dict, float, int, list, str, None]]`<a id="inputs-dictstr-unionbool-date-datetime-dict-float-int-list-str-none"></a>
-
-The inputs passed to the prompt template.
-
-##### source: `str`<a id="source-str"></a>
-
-Identifies where the model was called from.
-
-##### metadata: `Dict[str, Union[bool, date, datetime, dict, float, int, list, str, None]]`<a id="metadata-dictstr-unionbool-date-datetime-dict-float-int-list-str-none"></a>
-
-Any additional metadata to record.
-
-##### save: `bool`<a id="save-bool"></a>
-
-Whether the request/response payloads will be stored on Humanloop.
-
-##### source_datapoint_id: `str`<a id="source_datapoint_id-str"></a>
-
-ID of the source datapoint if this is a log derived from a datapoint in a dataset.
-
-##### provider_api_keys: [`ProviderApiKeys`](./humanloop/type/provider_api_keys.py)<a id="provider_api_keys-providerapikeyshumanlooptypeprovider_api_keyspy"></a>
-
-
-API keys required by each provider to make API calls. The API keys provided here are not stored by Humanloop. If not specified here, Humanloop will fall back to the key saved to your organization.
-
-##### num_samples: `int`<a id="num_samples-int"></a>
-
-The number of chat responses, where each chat response will use a model configuration sampled from the experiment.
-
-##### stream: `bool`<a id="stream-bool"></a>
-
-If true, tokens will be sent as data-only server-sent events. If num_samples > 1, samples are streamed back independently.
-
-##### user: `str`<a id="user-str"></a>
-
-End-user ID passed through to provider call.
-
-##### seed: `int`<a id="seed-int"></a>
-
-Deprecated field: the seed is instead set as part of the request.config object.
-
-##### return_inputs: `bool`<a id="return_inputs-bool"></a>
-
-Whether to return the inputs in the response. If false, the response will contain an empty dictionary under inputs. This is useful for reducing the size of the response. Defaults to true.
-
-##### tool_choice: Union[`str`, `str`, `str`, `ToolChoice`]<a id="tool_choice-unionstr-str-str-toolchoice"></a>
-
-
-Controls how the model uses tools. The following options are supported: 'none' forces the model to not call a tool; the default when no tools are provided as part of the model config. 'auto' the model can decide to call one of the provided tools; the default when tools are provided as part of the model config. Providing {'type': 'function', 'function': {name': <TOOL_NAME>}} forces the model to use the named function.
-
-##### tool_call: Union[`str`, [`Dict[str, str]`](./humanloop/type/typing_dict_str_str.py)]<a id="tool_call-unionstr-dictstr-strhumanlooptypetyping_dict_str_strpy"></a>
-
-
-NB: Deprecated with new tool_choice. Controls how the model uses tools. The following options are supported: 'none' forces the model to not call a tool; the default when no tools are provided as part of the model config. 'auto' the model can decide to call one of the provided tools; the default when tools are provided as part of the model config. Providing {'name': <TOOL_NAME>} forces the model to use the provided tool of the same name.
-
-##### response_format: [`ResponseFormat`](./humanloop/type/response_format.py)<a id="response_format-responseformathumanlooptyperesponse_formatpy"></a>
-
-
-The format of the response. Only type json_object is currently supported for chat.
-
-#### ⚙️ Request Body<a id="⚙️-request-body"></a>
-
-[`ChatExperimentRequest`](./humanloop/type/chat_experiment_request.py)
-#### 🔄 Return<a id="🔄-return"></a>
-
-[`ChatResponse`](./humanloop/pydantic/chat_response.py)
-
-#### 🌐 Endpoint<a id="🌐-endpoint"></a>
-
-`/chat-experiment` `post`
-
-[🔙 **Back to Table of Contents**](#table-of-contents)
-
----
-
 ### `humanloop.chat_model_config`<a id="humanloopchat_model_config"></a>
 
 Get chat response for a specific model configuration.
@@ -920,7 +769,7 @@ create_model_config_response = humanloop.chat_model_config(
     tool_choice="string_example",
     tool_call="string_example",
     response_format={
-        "type": "json_object",
+        "type": "string_example",
     },
 )
 ```
@@ -1178,7 +1027,7 @@ The suffix that comes after a completion of inserted text. Useful for completion
 
 Create a completion using the project's active deployment.
 
-The active deployment can be a specific model configuration or an experiment.
+The active deployment can be a specific model configuration.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
@@ -1300,135 +1149,6 @@ The environment name used to create a chat response. If not specified, the defau
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/completion-deployed` `post`
-
-[🔙 **Back to Table of Contents**](#table-of-contents)
-
----
-
-### `humanloop.complete_experiment`<a id="humanloopcomplete_experiment"></a>
-
-Create a completion for a specific experiment.
-
-#### 🛠️ Usage<a id="🛠️-usage"></a>
-
-```python
-create_experiment_response = humanloop.complete_experiment(
-    experiment_id="string_example",
-    project="string_example",
-    project_id="string_example",
-    session_id="string_example",
-    session_reference_id="string_example",
-    parent_id="string_example",
-    parent_reference_id="string_example",
-    inputs={},
-    source="string_example",
-    metadata={},
-    save=True,
-    source_datapoint_id="string_example",
-    provider_api_keys={},
-    num_samples=1,
-    stream=False,
-    user="string_example",
-    seed=1,
-    return_inputs=True,
-    logprobs=1,
-    suffix="string_example",
-)
-```
-
-#### ⚙️ Parameters<a id="⚙️-parameters"></a>
-
-##### experiment_id: `str`<a id="experiment_id-str"></a>
-
-If an experiment ID is provided a model configuration will be sampled from the experiments active model configurations.
-
-##### project: `str`<a id="project-str"></a>
-
-Unique project name. If no project exists with this name, a new project will be created.
-
-##### project_id: `str`<a id="project_id-str"></a>
-
-Unique ID of a project to associate to the log. Either this or `project` must be provided.
-
-##### session_id: `str`<a id="session_id-str"></a>
-
-ID of the session to associate the datapoint.
-
-##### session_reference_id: `str`<a id="session_reference_id-str"></a>
-
-A unique string identifying the session to associate the datapoint to. Allows you to log multiple datapoints to a session (using an ID kept by your internal systems) by passing the same `session_reference_id` in subsequent log requests. Specify at most one of this or `session_id`.
-
-##### parent_id: `str`<a id="parent_id-str"></a>
-
-ID associated to the parent datapoint in a session.
-
-##### parent_reference_id: `str`<a id="parent_reference_id-str"></a>
-
-A unique string identifying the previously-logged parent datapoint in a session. Allows you to log nested datapoints with your internal system IDs by passing the same reference ID as `parent_id` in a prior log request. Specify at most one of this or `parent_id`. Note that this cannot refer to a datapoint being logged in the same request.
-
-##### inputs: `Dict[str, Union[bool, date, datetime, dict, float, int, list, str, None]]`<a id="inputs-dictstr-unionbool-date-datetime-dict-float-int-list-str-none"></a>
-
-The inputs passed to the prompt template.
-
-##### source: `str`<a id="source-str"></a>
-
-Identifies where the model was called from.
-
-##### metadata: `Dict[str, Union[bool, date, datetime, dict, float, int, list, str, None]]`<a id="metadata-dictstr-unionbool-date-datetime-dict-float-int-list-str-none"></a>
-
-Any additional metadata to record.
-
-##### save: `bool`<a id="save-bool"></a>
-
-Whether the request/response payloads will be stored on Humanloop.
-
-##### source_datapoint_id: `str`<a id="source_datapoint_id-str"></a>
-
-ID of the source datapoint if this is a log derived from a datapoint in a dataset.
-
-##### provider_api_keys: [`ProviderApiKeys`](./humanloop/type/provider_api_keys.py)<a id="provider_api_keys-providerapikeyshumanlooptypeprovider_api_keyspy"></a>
-
-
-API keys required by each provider to make API calls. The API keys provided here are not stored by Humanloop. If not specified here, Humanloop will fall back to the key saved to your organization.
-
-##### num_samples: `int`<a id="num_samples-int"></a>
-
-The number of chat responses, where each chat response will use a model configuration sampled from the experiment.
-
-##### stream: `bool`<a id="stream-bool"></a>
-
-If true, tokens will be sent as data-only server-sent events. If num_samples > 1, samples are streamed back independently.
-
-##### user: `str`<a id="user-str"></a>
-
-End-user ID passed through to provider call.
-
-##### seed: `int`<a id="seed-int"></a>
-
-Deprecated field: the seed is instead set as part of the request.config object.
-
-##### return_inputs: `bool`<a id="return_inputs-bool"></a>
-
-Whether to return the inputs in the response. If false, the response will contain an empty dictionary under inputs. This is useful for reducing the size of the response. Defaults to true.
-
-##### logprobs: `int`<a id="logprobs-int"></a>
-
-Include the log probabilities of the top n tokens in the provider_response
-
-##### suffix: `str`<a id="suffix-str"></a>
-
-The suffix that comes after a completion of inserted text. Useful for completions that act like inserts.
-
-#### ⚙️ Request Body<a id="⚙️-request-body"></a>
-
-[`CompletionExperimentRequest`](./humanloop/type/completion_experiment_request.py)
-#### 🔄 Return<a id="🔄-return"></a>
-
-[`CompletionResponse`](./humanloop/pydantic/completion_response.py)
-
-#### 🌐 Endpoint<a id="🌐-endpoint"></a>
-
-`/completion-experiment` `post`
 
 [🔙 **Back to Table of Contents**](#table-of-contents)
 
@@ -1568,7 +1288,7 @@ The suffix that comes after a completion of inserted text. Useful for completion
 
 Delete a list of datapoints by their IDs.
 
-WARNING: This endpoint has been decommisioned and no longer works. Please use the v5 datasets API instead.
+WARNING: This endpoint has been decommissioned and no longer works. Please use the v5 datasets API instead.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
@@ -1619,7 +1339,7 @@ String ID of datapoint.
 
 Edit the input, messages and criteria fields of a datapoint.
 
-WARNING: This endpoint has been decommisioned and no longer works. Please use the v5 datasets API instead.
+WARNING: This endpoint has been decommissioned and no longer works. Please use the v5 datasets API instead.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
@@ -2615,7 +2335,7 @@ feedback_response = humanloop.feedback(
         }
     ],
     type="string_example",
-    value="string_example",
+    value=True,
     data_id="string_example",
     user="string_example",
     created_at="1970-01-01T00:00:00.00Z",
@@ -2630,7 +2350,8 @@ feedback_response = humanloop.feedback(
 
 The type of feedback. The default feedback types available are 'rating', 'action', 'issue', 'correction', and 'comment'.
 
-##### value: `str`<a id="value-str"></a>
+##### value: Union[`bool`, `Union[int, float]`, `List[str]`, `str`]<a id="value-unionbool-unionint-float-liststr-str"></a>
+
 
 The feedback value to be set. This field should be left blank when unsetting 'rating', 'correction' or 'comment', but is required otherwise.
 
@@ -2820,7 +2541,6 @@ log_response = humanloop.log(
     save=True,
     source_datapoint_id="string_example",
     reference_id="string_example",
-    trial_id="string_example",
     messages=[
         {
             "role": "user",
@@ -2843,7 +2563,7 @@ log_response = humanloop.log(
     environment="string_example",
     feedback={
         "type": "string_example",
-        "value": 3.14,
+        "value": True,
     },
     created_at="1970-01-01T00:00:00.00Z",
     error="string_example",
@@ -2911,10 +2631,6 @@ ID of the source datapoint if this is a log derived from a datapoint in a datase
 
 A unique string to reference the datapoint. Allows you to log nested datapoints with your internal system IDs by passing the same reference ID as `parent_id` in a subsequent log request.
 
-##### trial_id: `str`<a id="trial_id-str"></a>
-
-Unique ID of an experiment trial to associate to the log.
-
 ##### messages: List[`ChatMessageWithToolCall`]<a id="messages-listchatmessagewithtoolcall"></a>
 
 The messages passed to the to provider chat endpoint.
@@ -2923,7 +2639,7 @@ The messages passed to the to provider chat endpoint.
 
 Generated output from your model for the provided inputs. Can be `None` if logging an error, or if logging a parent datapoint with the intention to populate it later
 
-##### judgment: Union[`bool`, `Union[int, float]`]<a id="judgment-unionbool-unionint-float"></a>
+##### judgment: Union[`bool`, `Union[int, float]`, `List[str]`, `str`]<a id="judgment-unionbool-unionint-float-liststr-str"></a>
 
 
 ##### config_id: `str`<a id="config_id-str"></a>
@@ -2933,7 +2649,7 @@ Unique ID of a config to associate to the log.
 ##### config: Union[`ModelConfigRequest`, `ToolConfigRequest`]<a id="config-unionmodelconfigrequest-toolconfigrequest"></a>
 
 
-The model config used for this generation. Required unless `config_id` or `trial_id` is provided.
+The model config used for this generation. Required unless `config_id` is provided.
 
 ##### environment: `str`<a id="environment-str"></a>
 
@@ -3192,14 +2908,10 @@ String ID of the model config. Starts with `config_`.
 
 ### `humanloop.model_configs.register`<a id="humanloopmodel_configsregister"></a>
 
-Register a model config to a project and optionally add it to an
-experiment.
+Register a model config to a project.
 
 If the project name provided does not exist, a new project will be created
 automatically.
-
-If an experiment name is provided, the specified experiment must already
-exist. Otherwise, an error will be raised.
 
 If the model config is the first to be associated to the project, it will
 be set as the active model config.
@@ -3221,11 +2933,10 @@ register_response = humanloop.model_configs.register(
     other={},
     seed=1,
     response_format={
-        "type": "json_object",
+        "type": "string_example",
     },
     project="string_example",
     project_id="string_example",
-    experiment="string_example",
     prompt_template="string_example",
     chat_template=[
         {
@@ -3306,10 +3017,6 @@ Unique project name. If it does not exist, a new project will be created.
 
 Unique project ID
 
-##### experiment: `str`<a id="experiment-str"></a>
-
-If specified, the model config will be added to this experiment. Experiments are used for A/B testing and optimizing hyperparameters.
-
 ##### prompt_template: `str`<a id="prompt_template-str"></a>
 
 Prompt template that will take your specified inputs to form your final request to the provider model. NB: Input variables within the prompt template should be specified with syntax: {{INPUT_NAME}}.
@@ -3370,7 +3077,7 @@ serialize_response = humanloop.model_configs.serialize(
     other={},
     seed=1,
     response_format={
-        "type": "json_object",
+        "type": "string_example",
     },
     endpoint="complete",
     chat_template=[
@@ -3478,12 +3185,6 @@ Create a new project.
 ```python
 create_response = humanloop.projects.create(
     name="string_example",
-    feedback_types=[
-        {
-            "type": "type_example",
-            "_class": "select",
-        }
-    ],
     directory_id="string_example",
 )
 ```
@@ -3493,10 +3194,6 @@ create_response = humanloop.projects.create(
 ##### name: `str`<a id="name-str"></a>
 
 Unique project name.
-
-##### feedback_types: List[`FeedbackTypeRequest`]<a id="feedback_types-listfeedbacktyperequest"></a>
-
-Feedback types to be created.
 
 ##### directory_id: `str`<a id="directory_id-str"></a>
 
@@ -3518,6 +3215,7 @@ ID of directory to assign project to. Starts with `dir_`. If not provided, the p
 ---
 
 ### `humanloop.projects.create_feedback_type`<a id="humanloopprojectscreate_feedback_type"></a>
+![Deprecated](https://img.shields.io/badge/deprecated-yellow)
 
 Create Feedback Type
 
@@ -3526,6 +3224,7 @@ Create Feedback Type
 ```python
 create_feedback_type_response = humanloop.projects.create_feedback_type(
     type="string_example",
+    _class="select",
     id="id_example",
     values=[
         {
@@ -3533,7 +3232,6 @@ create_feedback_type_response = humanloop.projects.create_feedback_type(
             "sentiment": "positive",
         }
     ],
-    _class="select",
 )
 ```
 
@@ -3543,6 +3241,10 @@ create_feedback_type_response = humanloop.projects.create_feedback_type(
 
 The type of feedback to update.
 
+##### _class: [`FeedbackClass`](./humanloop/type/feedback_class.py)<a id="_class-feedbackclasshumanlooptypefeedback_classpy"></a>
+
+The data type associated to this feedback type; whether it is a 'text'/'select'/'multi_select'.
+
 ##### id: `str`<a id="id-str"></a>
 
 String ID of project. Starts with `pr_`.
@@ -3550,10 +3252,6 @@ String ID of project. Starts with `pr_`.
 ##### values: List[`FeedbackLabelRequest`]<a id="values-listfeedbacklabelrequest"></a>
 
 The feedback values to be available. This field should only be populated when updating a 'select' or 'multi_select' feedback class.
-
-##### _class: [`FeedbackClass`](./humanloop/type/feedback_class.py)<a id="_class-feedbackclasshumanlooptypefeedback_classpy"></a>
-
-The data type associated to this feedback type; whether it is a 'text'/'select'/'multi_select'. This is optional when updating the default feedback types (i.e. when `type` is 'rating', 'action' or 'issue').
 
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 
@@ -3602,43 +3300,6 @@ Name for the environment. E.g. 'production'. If not provided, will delete the ac
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/projects/{id}/active-config` `delete`
-
-[🔙 **Back to Table of Contents**](#table-of-contents)
-
----
-
-### `humanloop.projects.deactivate_experiment`<a id="humanloopprojectsdeactivate_experiment"></a>
-
-Remove the project's active experiment, if set.
-
-This has no effect if the project does not have an active experiment set.
-
-#### 🛠️ Usage<a id="🛠️-usage"></a>
-
-```python
-deactivate_experiment_response = humanloop.projects.deactivate_experiment(
-    id="id_example",
-    environment="string_example",
-)
-```
-
-#### ⚙️ Parameters<a id="⚙️-parameters"></a>
-
-##### id: `str`<a id="id-str"></a>
-
-String ID of project. Starts with `pr_`.
-
-##### environment: `str`<a id="environment-str"></a>
-
-Name for the environment. E.g. 'producton'. If not provided, will return the experiment for the default environment.
-
-#### 🔄 Return<a id="🔄-return"></a>
-
-[`ProjectResponse`](./humanloop/pydantic/project_response.py)
-
-#### 🌐 Endpoint<a id="🌐-endpoint"></a>
-
-`/projects/{id}/active-experiment` `delete`
 
 [🔙 **Back to Table of Contents**](#table-of-contents)
 
@@ -3709,9 +3370,8 @@ If the environment already has a model config deployed, it will be replaced.
 
 ```python
 deploy_config_response = humanloop.projects.deploy_config(
-    project_id="project_id_example",
     config_id="string_example",
-    experiment_id="string_example",
+    project_id="project_id_example",
     environments=[
         {
             "id": "id_example",
@@ -3722,15 +3382,11 @@ deploy_config_response = humanloop.projects.deploy_config(
 
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### project_id: `str`<a id="project_id-str"></a>
-
 ##### config_id: `str`<a id="config_id-str"></a>
 
 Model config unique identifier generated by Humanloop.
 
-##### experiment_id: `str`<a id="experiment_id-str"></a>
-
-String ID of experiment. Starts with `exp_`.
+##### project_id: `str`<a id="project_id-str"></a>
 
 ##### environments: List[`EnvironmentRequest`]<a id="environments-listenvironmentrequest"></a>
 
@@ -3829,7 +3485,7 @@ String ID of project. Starts with `pr_`.
 Retrieves a config to use to execute your model.
 
 A config will be selected based on the project's
-active config/experiment settings.
+active config settings.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
@@ -3848,7 +3504,7 @@ String ID of project. Starts with `pr_`.
 
 ##### environment: `str`<a id="environment-str"></a>
 
-Name for the environment. E.g. 'producton'. If not provided, will return the active config for the default environment.
+Name for the environment. E.g. 'production'. If not provided, will return the active config for the default environment.
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -3984,15 +3640,10 @@ String ID of project. Starts with `pr_`.
 
 Update a specific project.
 
-Set the project's active model config/experiment by passing either
-`active_experiment_id` or `active_model_config_id`.
+Set the project's active model config by passing `active_model_config_id`.
 These will be set to the Default environment unless a list of environments
 are also passed in specifically detailing which environments to assign the
-active config or experiment.
-
-Set the feedback labels to be treated as positive user feedback used in
-calculating top-level project metrics by passing a list of labels in
-`positive_labels`.
+active config.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
@@ -4000,14 +3651,7 @@ calculating top-level project metrics by passing a list of labels in
 update_response = humanloop.projects.update(
     id="id_example",
     name="string_example",
-    active_experiment_id="string_example",
     active_config_id="string_example",
-    positive_labels=[
-        {
-            "type": "type_example",
-            "value": "value_example",
-        }
-    ],
     directory_id="string_example",
 )
 ```
@@ -4022,17 +3666,9 @@ String ID of project. Starts with `pr_`.
 
 The new unique project name. Caution, if you are using the project name as the unique identifier in your API calls, changing the name will break the calls.
 
-##### active_experiment_id: `str`<a id="active_experiment_id-str"></a>
-
-ID for an experiment to set as the project's active deployment. Starts with 'exp_'. At most one of 'active_experiment_id' and 'active_model_config_id' can be set.
-
 ##### active_config_id: `str`<a id="active_config_id-str"></a>
 
-ID for a config to set as the project's active deployment. Starts with 'config_'. At most one of 'active_experiment_id' and 'active_config_id' can be set.
-
-##### positive_labels: List[`PositiveLabel`]<a id="positive_labels-listpositivelabel"></a>
-
-The full list of labels to treat as positive user feedback.
+ID for a config to set as the project's active deployment. Starts with 'config_'. 
 
 ##### directory_id: `str`<a id="directory_id-str"></a>
 
@@ -4054,25 +3690,16 @@ ID of directory to assign project to. Starts with `dir_`.
 ---
 
 ### `humanloop.projects.update_feedback_types`<a id="humanloopprojectsupdate_feedback_types"></a>
+![Deprecated](https://img.shields.io/badge/deprecated-yellow)
 
 Update feedback types.
 
-Allows enabling the available feedback types and setting status of
-feedback types/categorical values.
-
-This behaves like an upsert; any feedback categorical values that do not
-already exist in the project will be created.
+WARNING: This endpoint has been decommissioned and no longer works. Please use the v5 Human Evaluators API instead.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```python
 update_feedback_types_response = humanloop.projects.update_feedback_types(
-    body=[
-        {
-            "type": "type_example",
-            "_class": "select",
-        }
-    ],
     id="id_example",
 )
 ```
@@ -4082,12 +3709,6 @@ update_feedback_types_response = humanloop.projects.update_feedback_types(
 ##### id: `str`<a id="id-str"></a>
 
 String ID of project. Starts with `pr_`.
-
-##### requestBody: [`ProjectsUpdateFeedbackTypesRequest`](./humanloop/type/projects_update_feedback_types_request.py)<a id="requestbody-projectsupdatefeedbacktypesrequesthumanlooptypeprojects_update_feedback_types_requestpy"></a>
-
-#### 🔄 Return<a id="🔄-return"></a>
-
-[`FeedbackTypes`](./humanloop/pydantic/feedback_types.py)
 
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 

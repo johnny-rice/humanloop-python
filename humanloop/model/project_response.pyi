@@ -82,10 +82,6 @@ class ProjectResponse(
             updated_at = schemas.DateTimeSchema
         
             @staticmethod
-            def active_experiment() -> typing.Type['ExperimentResponse']:
-                return ExperimentResponse
-        
-            @staticmethod
             def active_config() -> typing.Type['ProjectConfigResponse']:
                 return ProjectConfigResponse
         
@@ -128,7 +124,6 @@ class ProjectResponse(
                 "team_id": team_id,
                 "created_at": created_at,
                 "updated_at": updated_at,
-                "active_experiment": active_experiment,
                 "active_config": active_config,
                 "config_type": config_type,
                 "active_evaluators": active_evaluators,
@@ -169,9 +164,6 @@ class ProjectResponse(
     def __getitem__(self, name: typing_extensions.Literal["updated_at"]) -> MetaOapg.properties.updated_at: ...
     
     @typing.overload
-    def __getitem__(self, name: typing_extensions.Literal["active_experiment"]) -> 'ExperimentResponse': ...
-    
-    @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["active_config"]) -> 'ProjectConfigResponse': ...
     
     @typing.overload
@@ -186,7 +178,7 @@ class ProjectResponse(
     @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["id", "name", "users", "data_count", "feedback_types", "team_id", "created_at", "updated_at", "active_experiment", "active_config", "config_type", "active_evaluators", "directory_id", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["id", "name", "users", "data_count", "feedback_types", "team_id", "created_at", "updated_at", "active_config", "config_type", "active_evaluators", "directory_id", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -216,9 +208,6 @@ class ProjectResponse(
     def get_item_oapg(self, name: typing_extensions.Literal["updated_at"]) -> MetaOapg.properties.updated_at: ...
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["active_experiment"]) -> typing.Union['ExperimentResponse', schemas.Unset]: ...
-    
-    @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["active_config"]) -> typing.Union['ProjectConfigResponse', schemas.Unset]: ...
     
     @typing.overload
@@ -233,7 +222,7 @@ class ProjectResponse(
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["id", "name", "users", "data_count", "feedback_types", "team_id", "created_at", "updated_at", "active_experiment", "active_config", "config_type", "active_evaluators", "directory_id", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["id", "name", "users", "data_count", "feedback_types", "team_id", "created_at", "updated_at", "active_config", "config_type", "active_evaluators", "directory_id", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -248,7 +237,6 @@ class ProjectResponse(
         team_id: typing.Union[MetaOapg.properties.team_id, str, ],
         data_count: typing.Union[MetaOapg.properties.data_count, decimal.Decimal, int, ],
         users: typing.Union[MetaOapg.properties.users, list, tuple, ],
-        active_experiment: typing.Union['ExperimentResponse', schemas.Unset] = schemas.unset,
         active_config: typing.Union['ProjectConfigResponse', schemas.Unset] = schemas.unset,
         config_type: typing.Union['ConfigType', schemas.Unset] = schemas.unset,
         active_evaluators: typing.Union[MetaOapg.properties.active_evaluators, list, tuple, schemas.Unset] = schemas.unset,
@@ -267,7 +255,6 @@ class ProjectResponse(
             team_id=team_id,
             data_count=data_count,
             users=users,
-            active_experiment=active_experiment,
             active_config=active_config,
             config_type=config_type,
             active_evaluators=active_evaluators,
@@ -278,7 +265,6 @@ class ProjectResponse(
 
 from humanloop.model.config_type import ConfigType
 from humanloop.model.evaluator_response import EvaluatorResponse
-from humanloop.model.experiment_response import ExperimentResponse
 from humanloop.model.feedback_types import FeedbackTypes
 from humanloop.model.project_config_response import ProjectConfigResponse
 from humanloop.model.project_user_response import ProjectUserResponse

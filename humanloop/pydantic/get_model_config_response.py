@@ -17,7 +17,6 @@ from pydantic import BaseModel, Field, RootModel, ConfigDict
 
 from humanloop.pydantic.config_response import ConfigResponse
 from humanloop.pydantic.model_config_evaluator_aggregate_response import ModelConfigEvaluatorAggregateResponse
-from humanloop.pydantic.project_model_config_feedback_stats_response import ProjectModelConfigFeedbackStatsResponse
 
 class GetModelConfigResponse(BaseModel):
     # String ID of project the model config belongs to. Starts with `pr_`.
@@ -34,20 +33,11 @@ class GetModelConfigResponse(BaseModel):
 
     config: ConfigResponse = Field(alias='config')
 
-    # Feedback statistics for the project model config.
-    feedback_stats: typing.Optional[typing.List[ProjectModelConfigFeedbackStatsResponse]] = Field(None, alias='feedback_stats')
-
     # Number of datapoints associated with this project model config.
     num_datapoints: typing.Optional[int] = Field(None, alias='num_datapoints')
 
-    # The ID of the experiment the model config has been registered to. Only populated when registering a model config to an experiment.
-    experiment_id: typing.Optional[str] = Field(None, alias='experiment_id')
-
     # Aggregates of evaluators for the model config.
     evaluation_aggregates: typing.Optional[typing.List[ModelConfigEvaluatorAggregateResponse]] = Field(None, alias='evaluation_aggregates')
-
-    # ID of trial to reference in subsequent log calls.
-    trial_id: typing.Optional[str] = Field(None, alias='trial_id')
 
     # ID of environment to reference in subsequent log calls.
     environment_id: typing.Optional[str] = Field(None, alias='environment_id')

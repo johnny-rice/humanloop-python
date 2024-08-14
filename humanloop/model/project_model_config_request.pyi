@@ -122,7 +122,6 @@ Contains fields that are common to all (i.e. both chat and complete) endpoints.
                 return ResponseFormat
             project = schemas.StrSchema
             project_id = schemas.StrSchema
-            experiment = schemas.StrSchema
             prompt_template = schemas.StrSchema
             
             
@@ -174,7 +173,6 @@ Contains fields that are common to all (i.e. both chat and complete) endpoints.
                 "response_format": response_format,
                 "project": project,
                 "project_id": project_id,
-                "experiment": experiment,
                 "prompt_template": prompt_template,
                 "chat_template": chat_template,
                 "endpoint": endpoint,
@@ -229,9 +227,6 @@ Contains fields that are common to all (i.e. both chat and complete) endpoints.
     def __getitem__(self, name: typing_extensions.Literal["project_id"]) -> MetaOapg.properties.project_id: ...
     
     @typing.overload
-    def __getitem__(self, name: typing_extensions.Literal["experiment"]) -> MetaOapg.properties.experiment: ...
-    
-    @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["prompt_template"]) -> MetaOapg.properties.prompt_template: ...
     
     @typing.overload
@@ -246,7 +241,7 @@ Contains fields that are common to all (i.e. both chat and complete) endpoints.
     @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["model", "description", "name", "provider", "max_tokens", "temperature", "top_p", "stop", "presence_penalty", "frequency_penalty", "other", "seed", "response_format", "project", "project_id", "experiment", "prompt_template", "chat_template", "endpoint", "tools", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["model", "description", "name", "provider", "max_tokens", "temperature", "top_p", "stop", "presence_penalty", "frequency_penalty", "other", "seed", "response_format", "project", "project_id", "prompt_template", "chat_template", "endpoint", "tools", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -297,9 +292,6 @@ Contains fields that are common to all (i.e. both chat and complete) endpoints.
     def get_item_oapg(self, name: typing_extensions.Literal["project_id"]) -> typing.Union[MetaOapg.properties.project_id, schemas.Unset]: ...
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["experiment"]) -> typing.Union[MetaOapg.properties.experiment, schemas.Unset]: ...
-    
-    @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["prompt_template"]) -> typing.Union[MetaOapg.properties.prompt_template, schemas.Unset]: ...
     
     @typing.overload
@@ -314,7 +306,7 @@ Contains fields that are common to all (i.e. both chat and complete) endpoints.
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["model", "description", "name", "provider", "max_tokens", "temperature", "top_p", "stop", "presence_penalty", "frequency_penalty", "other", "seed", "response_format", "project", "project_id", "experiment", "prompt_template", "chat_template", "endpoint", "tools", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["model", "description", "name", "provider", "max_tokens", "temperature", "top_p", "stop", "presence_penalty", "frequency_penalty", "other", "seed", "response_format", "project", "project_id", "prompt_template", "chat_template", "endpoint", "tools", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -336,7 +328,6 @@ Contains fields that are common to all (i.e. both chat and complete) endpoints.
         response_format: typing.Union['ResponseFormat', schemas.Unset] = schemas.unset,
         project: typing.Union[MetaOapg.properties.project, str, schemas.Unset] = schemas.unset,
         project_id: typing.Union[MetaOapg.properties.project_id, str, schemas.Unset] = schemas.unset,
-        experiment: typing.Union[MetaOapg.properties.experiment, str, schemas.Unset] = schemas.unset,
         prompt_template: typing.Union[MetaOapg.properties.prompt_template, str, schemas.Unset] = schemas.unset,
         chat_template: typing.Union[MetaOapg.properties.chat_template, list, tuple, schemas.Unset] = schemas.unset,
         endpoint: typing.Union['ModelEndpoints', schemas.Unset] = schemas.unset,
@@ -362,7 +353,6 @@ Contains fields that are common to all (i.e. both chat and complete) endpoints.
             response_format=response_format,
             project=project,
             project_id=project_id,
-            experiment=experiment,
             prompt_template=prompt_template,
             chat_template=chat_template,
             endpoint=endpoint,

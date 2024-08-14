@@ -16,7 +16,6 @@ from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 
 from humanloop.type.config_response import ConfigResponse
 from humanloop.type.model_config_evaluator_aggregate_response import ModelConfigEvaluatorAggregateResponse
-from humanloop.type.project_model_config_feedback_stats_response import ProjectModelConfigFeedbackStatsResponse
 
 class RequiredProjectConfigResponse(TypedDict):
     # String ID of project the model config belongs to. Starts with `pr_`.
@@ -35,14 +34,8 @@ class RequiredProjectConfigResponse(TypedDict):
 
 
 class OptionalProjectConfigResponse(TypedDict, total=False):
-    # Feedback statistics for the project model config.
-    feedback_stats: typing.List[ProjectModelConfigFeedbackStatsResponse]
-
     # Number of datapoints associated with this project model config.
     num_datapoints: int
-
-    # The ID of the experiment the model config has been registered to. Only populated when registering a model config to an experiment.
-    experiment_id: str
 
     # Aggregates of evaluators for the model config.
     evaluation_aggregates: typing.List[ModelConfigEvaluatorAggregateResponse]

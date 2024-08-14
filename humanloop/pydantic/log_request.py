@@ -57,21 +57,18 @@ class LogRequest(BaseModel):
     # A unique string to reference the datapoint. Allows you to log nested datapoints with your internal system IDs by passing the same reference ID as `parent_id` in a subsequent log request.
     reference_id: typing.Optional[str] = Field(None, alias='reference_id')
 
-    # Unique ID of an experiment trial to associate to the log.
-    trial_id: typing.Optional[str] = Field(None, alias='trial_id')
-
     # The messages passed to the to provider chat endpoint.
     messages: typing.Optional[typing.List[ChatMessageWithToolCall]] = Field(None, alias='messages')
 
     # Generated output from your model for the provided inputs. Can be `None` if logging an error, or if logging a parent datapoint with the intention to populate it later
     output: typing.Optional[str] = Field(None, alias='output')
 
-    judgment: typing.Optional[typing.Union[bool, typing.Union[int, float]]] = Field(None, alias='judgment')
+    judgment: typing.Optional[typing.Union[bool, typing.Union[int, float], typing.List[str], str]] = Field(None, alias='judgment')
 
     # Unique ID of a config to associate to the log.
     config_id: typing.Optional[str] = Field(None, alias='config_id')
 
-    # The model config used for this generation. Required unless `config_id` or `trial_id` is provided.
+    # The model config used for this generation. Required unless `config_id` is provided.
     config: typing.Optional[typing.Union[ModelConfigRequest, ToolConfigRequest]] = Field(None, alias='config')
 
     # The environment name used to create the log.

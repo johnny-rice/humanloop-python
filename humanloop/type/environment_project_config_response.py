@@ -39,11 +39,5 @@ class OptionalEnvironmentProjectConfigResponse(TypedDict, total=False):
     # A friendly display name for the model config.
     model_config_name: str
 
-    # String ID of experiment. Starts with `exp_`.
-    experiment_id: str
-
-    # Display name of experiment.
-    experiment_name: str
-
 class EnvironmentProjectConfigResponse(RequiredEnvironmentProjectConfigResponse, OptionalEnvironmentProjectConfigResponse):
     pass

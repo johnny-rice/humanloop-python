@@ -39,7 +39,7 @@ class EvaluationResultResponse(BaseModel):
 
     version_id: typing.Optional[str] = Field(None, alias='version_id')
 
-    value: typing.Optional[typing.Union[bool, typing.Union[int, float]]] = Field(None, alias='value')
+    value: typing.Optional[typing.Union[bool, typing.Union[int, float], str, typing.List[str]]] = Field(None, alias='value')
 
     error: typing.Optional[str] = Field(None, alias='error')
 

@@ -140,19 +140,19 @@ class BaseApi(api_client.Api):
     def _create_feedback_type_mapped_args(
         self,
         type: str,
+        _class: FeedbackClass,
         id: str,
         values: typing.Optional[typing.List[FeedbackLabelRequest]] = None,
-        _class: typing.Optional[FeedbackClass] = None,
     ) -> api_client.MappedArgs:
         args: api_client.MappedArgs = api_client.MappedArgs()
         _path_params = {}
         _body = {}
         if type is not None:
             _body["type"] = type
-        if values is not None:
-            _body["values"] = values
         if _class is not None:
             _body["class"] = _class
+        if values is not None:
+            _body["values"] = values
         args.body = _body
         if id is not None:
             _path_params["id"] = id
@@ -391,12 +391,13 @@ class BaseApi(api_client.Api):
 class CreateFeedbackTypeRaw(BaseApi):
     # this class is used by api classes that refer to endpoints with operationId fn names
 
+    @api_client.DeprecationWarningOnce(prefix="projects")
     async def acreate_feedback_type(
         self,
         type: str,
+        _class: FeedbackClass,
         id: str,
         values: typing.Optional[typing.List[FeedbackLabelRequest]] = None,
-        _class: typing.Optional[FeedbackClass] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor201Async,
@@ -405,9 +406,9 @@ class CreateFeedbackTypeRaw(BaseApi):
     ]:
         args = self._create_feedback_type_mapped_args(
             type=type,
+            _class=_class,
             id=id,
             values=values,
-            _class=_class,
         )
         return await self._acreate_feedback_type_oapg(
             body=args.body,
@@ -415,21 +416,22 @@ class CreateFeedbackTypeRaw(BaseApi):
             **kwargs,
         )
     
+    @api_client.DeprecationWarningOnce(prefix="projects")
     def create_feedback_type(
         self,
         type: str,
+        _class: FeedbackClass,
         id: str,
         values: typing.Optional[typing.List[FeedbackLabelRequest]] = None,
-        _class: typing.Optional[FeedbackClass] = None,
     ) -> typing.Union[
         ApiResponseFor201,
         api_client.ApiResponseWithoutDeserialization,
     ]:
         args = self._create_feedback_type_mapped_args(
             type=type,
+            _class=_class,
             id=id,
             values=values,
-            _class=_class,
         )
         return self._create_feedback_type_oapg(
             body=args.body,
@@ -438,20 +440,21 @@ class CreateFeedbackTypeRaw(BaseApi):
 
 class CreateFeedbackType(BaseApi):
 
+    @api_client.DeprecationWarningOnce(prefix="projects")
     async def acreate_feedback_type(
         self,
         type: str,
+        _class: FeedbackClass,
         id: str,
         values: typing.Optional[typing.List[FeedbackLabelRequest]] = None,
-        _class: typing.Optional[FeedbackClass] = None,
         validate: bool = False,
         **kwargs,
     ) -> FeedbackTypeModelPydantic:
         raw_response = await self.raw.acreate_feedback_type(
             type=type,
+            _class=_class,
             id=id,
             values=values,
-            _class=_class,
             **kwargs,
         )
         if validate:
@@ -459,19 +462,20 @@ class CreateFeedbackType(BaseApi):
         return api_client.construct_model_instance(FeedbackTypeModelPydantic, raw_response.body)
     
     
+    @api_client.DeprecationWarningOnce(prefix="projects")
     def create_feedback_type(
         self,
         type: str,
+        _class: FeedbackClass,
         id: str,
         values: typing.Optional[typing.List[FeedbackLabelRequest]] = None,
-        _class: typing.Optional[FeedbackClass] = None,
         validate: bool = False,
     ) -> FeedbackTypeModelPydantic:
         raw_response = self.raw.create_feedback_type(
             type=type,
+            _class=_class,
             id=id,
             values=values,
-            _class=_class,
         )
         if validate:
             return FeedbackTypeModelPydantic(**raw_response.body)
@@ -481,12 +485,13 @@ class CreateFeedbackType(BaseApi):
 class ApiForpost(BaseApi):
     # this class is used by api classes that refer to endpoints by path and http method names
 
+    @api_client.DeprecationWarningOnce(prefix="projects")
     async def apost(
         self,
         type: str,
+        _class: FeedbackClass,
         id: str,
         values: typing.Optional[typing.List[FeedbackLabelRequest]] = None,
-        _class: typing.Optional[FeedbackClass] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor201Async,
@@ -495,9 +500,9 @@ class ApiForpost(BaseApi):
     ]:
         args = self._create_feedback_type_mapped_args(
             type=type,
+            _class=_class,
             id=id,
             values=values,
-            _class=_class,
         )
         return await self._acreate_feedback_type_oapg(
             body=args.body,
@@ -505,21 +510,22 @@ class ApiForpost(BaseApi):
             **kwargs,
         )
     
+    @api_client.DeprecationWarningOnce(prefix="projects")
     def post(
         self,
         type: str,
+        _class: FeedbackClass,
         id: str,
         values: typing.Optional[typing.List[FeedbackLabelRequest]] = None,
-        _class: typing.Optional[FeedbackClass] = None,
     ) -> typing.Union[
         ApiResponseFor201,
         api_client.ApiResponseWithoutDeserialization,
     ]:
         args = self._create_feedback_type_mapped_args(
             type=type,
+            _class=_class,
             id=id,
             values=values,
-            _class=_class,
         )
         return self._create_feedback_type_oapg(
             body=args.body,

@@ -38,36 +38,9 @@ class CreateProjectRequest(
         
         class properties:
             name = schemas.StrSchema
-            
-            
-            class feedback_types(
-                schemas.ListSchema
-            ):
-            
-            
-                class MetaOapg:
-                    
-                    @staticmethod
-                    def items() -> typing.Type['FeedbackTypeRequest']:
-                        return FeedbackTypeRequest
-            
-                def __new__(
-                    cls,
-                    arg: typing.Union[typing.Tuple['FeedbackTypeRequest'], typing.List['FeedbackTypeRequest']],
-                    _configuration: typing.Optional[schemas.Configuration] = None,
-                ) -> 'feedback_types':
-                    return super().__new__(
-                        cls,
-                        arg,
-                        _configuration=_configuration,
-                    )
-            
-                def __getitem__(self, i: int) -> 'FeedbackTypeRequest':
-                    return super().__getitem__(i)
             directory_id = schemas.StrSchema
             __annotations__ = {
                 "name": name,
-                "feedback_types": feedback_types,
                 "directory_id": directory_id,
             }
     
@@ -77,15 +50,12 @@ class CreateProjectRequest(
     def __getitem__(self, name: typing_extensions.Literal["name"]) -> MetaOapg.properties.name: ...
     
     @typing.overload
-    def __getitem__(self, name: typing_extensions.Literal["feedback_types"]) -> MetaOapg.properties.feedback_types: ...
-    
-    @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["directory_id"]) -> MetaOapg.properties.directory_id: ...
     
     @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["name", "feedback_types", "directory_id", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["name", "directory_id", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -94,15 +64,12 @@ class CreateProjectRequest(
     def get_item_oapg(self, name: typing_extensions.Literal["name"]) -> MetaOapg.properties.name: ...
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["feedback_types"]) -> typing.Union[MetaOapg.properties.feedback_types, schemas.Unset]: ...
-    
-    @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["directory_id"]) -> typing.Union[MetaOapg.properties.directory_id, schemas.Unset]: ...
     
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["name", "feedback_types", "directory_id", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["name", "directory_id", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -110,7 +77,6 @@ class CreateProjectRequest(
         cls,
         *args: typing.Union[dict, frozendict.frozendict, ],
         name: typing.Union[MetaOapg.properties.name, str, ],
-        feedback_types: typing.Union[MetaOapg.properties.feedback_types, list, tuple, schemas.Unset] = schemas.unset,
         directory_id: typing.Union[MetaOapg.properties.directory_id, str, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
@@ -119,10 +85,7 @@ class CreateProjectRequest(
             cls,
             *args,
             name=name,
-            feedback_types=feedback_types,
             directory_id=directory_id,
             _configuration=_configuration,
             **kwargs,
         )
-
-from humanloop.model.feedback_type_request import FeedbackTypeRequest

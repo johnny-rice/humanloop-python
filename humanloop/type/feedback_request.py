@@ -23,7 +23,7 @@ class RequiredFeedbackRequest(TypedDict):
 
 class OptionalFeedbackRequest(TypedDict, total=False):
     # The feedback value to be set. This field should be left blank when unsetting 'rating', 'correction' or 'comment', but is required otherwise.
-    value: str
+    value: typing.Union[bool, typing.Union[int, float], typing.List[str], str]
 
     # ID to associate the feedback to a previously logged datapoint.
     data_id: str

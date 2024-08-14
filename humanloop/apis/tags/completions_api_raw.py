@@ -11,14 +11,12 @@
 
 from humanloop.paths.completion.post import CreateRaw
 from humanloop.paths.completion_deployed.post import CreateDeployedRaw
-from humanloop.paths.completion_experiment.post import CreateExperimentRaw
 from humanloop.paths.completion_model_config.post import CreateModelConfigRaw
 
 
 class CompletionsApiRaw(
     CreateRaw,
     CreateDeployedRaw,
-    CreateExperimentRaw,
     CreateModelConfigRaw,
 ):
     """NOTE:

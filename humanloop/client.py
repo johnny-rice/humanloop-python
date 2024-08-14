@@ -42,13 +42,6 @@ from humanloop.type.tool_choice import ToolChoice
 from humanloop.type.chat_deployed_request import ChatDeployedRequest
 from humanloop.type.chat_response import ChatResponse
 from humanloop.type.http_validation_error import HTTPValidationError
-from humanloop.type.provider_api_keys import ProviderApiKeys
-from humanloop.type.response_format import ResponseFormat
-from humanloop.type.chat_message_with_tool_call import ChatMessageWithToolCall
-from humanloop.type.tool_choice import ToolChoice
-from humanloop.type.chat_experiment_request import ChatExperimentRequest
-from humanloop.type.chat_response import ChatResponse
-from humanloop.type.http_validation_error import HTTPValidationError
 from humanloop.type.chat_model_config_request import ChatModelConfigRequest
 from humanloop.type.provider_api_keys import ProviderApiKeys
 from humanloop.type.response_format import ResponseFormat
@@ -63,10 +56,6 @@ from humanloop.type.completion_response import CompletionResponse
 from humanloop.type.http_validation_error import HTTPValidationError
 from humanloop.type.completion_deployed_request import CompletionDeployedRequest
 from humanloop.type.provider_api_keys import ProviderApiKeys
-from humanloop.type.completion_response import CompletionResponse
-from humanloop.type.http_validation_error import HTTPValidationError
-from humanloop.type.provider_api_keys import ProviderApiKeys
-from humanloop.type.completion_experiment_request import CompletionExperimentRequest
 from humanloop.type.completion_response import CompletionResponse
 from humanloop.type.http_validation_error import HTTPValidationError
 from humanloop.type.provider_api_keys import ProviderApiKeys
@@ -313,110 +302,6 @@ class Humanloop(ClientCustom):
             tool_call=tool_call,
             response_format=response_format,
             environment=environment,
-        )
-
-    @copy_signature(ChatsApi.acreate_experiment)
-    async def achat_experiment(
-        self,
-        messages: typing.List[ChatMessageWithToolCall],
-        experiment_id: str,
-        project: typing.Optional[str] = None,
-        project_id: typing.Optional[str] = None,
-        session_id: typing.Optional[str] = None,
-        session_reference_id: typing.Optional[str] = None,
-        parent_id: typing.Optional[str] = None,
-        parent_reference_id: typing.Optional[str] = None,
-        inputs: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = None,
-        source: typing.Optional[str] = None,
-        metadata: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = None,
-        save: typing.Optional[bool] = None,
-        source_datapoint_id: typing.Optional[str] = None,
-        provider_api_keys: typing.Optional[ProviderApiKeys] = None,
-        num_samples: typing.Optional[int] = None,
-        stream: typing.Optional[bool] = None,
-        user: typing.Optional[str] = None,
-        seed: typing.Optional[int] = None,
-        return_inputs: typing.Optional[bool] = None,
-        tool_choice: typing.Optional[typing.Union[str, str, str, ToolChoice]] = None,
-        tool_call: typing.Optional[typing.Union[str, typing.Dict[str, str]]] = None,
-        response_format: typing.Optional[ResponseFormat] = None,
-        **kwargs,
-    ):
-        return await self.chats.acreate_experiment(
-            messages=messages,
-            experiment_id=experiment_id,
-            project=project,
-            project_id=project_id,
-            session_id=session_id,
-            session_reference_id=session_reference_id,
-            parent_id=parent_id,
-            parent_reference_id=parent_reference_id,
-            inputs=inputs,
-            source=source,
-            metadata=metadata,
-            save=save,
-            source_datapoint_id=source_datapoint_id,
-            provider_api_keys=provider_api_keys,
-            num_samples=num_samples,
-            stream=stream,
-            user=user,
-            seed=seed,
-            return_inputs=return_inputs,
-            tool_choice=tool_choice,
-            tool_call=tool_call,
-            response_format=response_format,
-            **kwargs,
-        )
-
-    @copy_signature(ChatsApi.create_experiment)
-    def chat_experiment(
-        self,
-        messages: typing.List[ChatMessageWithToolCall],
-        experiment_id: str,
-        project: typing.Optional[str] = None,
-        project_id: typing.Optional[str] = None,
-        session_id: typing.Optional[str] = None,
-        session_reference_id: typing.Optional[str] = None,
-        parent_id: typing.Optional[str] = None,
-        parent_reference_id: typing.Optional[str] = None,
-        inputs: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = None,
-        source: typing.Optional[str] = None,
-        metadata: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = None,
-        save: typing.Optional[bool] = None,
-        source_datapoint_id: typing.Optional[str] = None,
-        provider_api_keys: typing.Optional[ProviderApiKeys] = None,
-        num_samples: typing.Optional[int] = None,
-        stream: typing.Optional[bool] = None,
-        user: typing.Optional[str] = None,
-        seed: typing.Optional[int] = None,
-        return_inputs: typing.Optional[bool] = None,
-        tool_choice: typing.Optional[typing.Union[str, str, str, ToolChoice]] = None,
-        tool_call: typing.Optional[typing.Union[str, typing.Dict[str, str]]] = None,
-        response_format: typing.Optional[ResponseFormat] = None,
-    ):
-        return self.chats.create_experiment(
-            messages=messages,
-            experiment_id=experiment_id,
-            project=project,
-            project_id=project_id,
-            session_id=session_id,
-            session_reference_id=session_reference_id,
-            parent_id=parent_id,
-            parent_reference_id=parent_reference_id,
-            inputs=inputs,
-            source=source,
-            metadata=metadata,
-            save=save,
-            source_datapoint_id=source_datapoint_id,
-            provider_api_keys=provider_api_keys,
-            num_samples=num_samples,
-            stream=stream,
-            user=user,
-            seed=seed,
-            return_inputs=return_inputs,
-            tool_choice=tool_choice,
-            tool_call=tool_call,
-            response_format=response_format,
         )
 
     @copy_signature(ChatsApi.acreate_model_config)
@@ -715,102 +600,6 @@ class Humanloop(ClientCustom):
             environment=environment,
         )
 
-    @copy_signature(CompletionsApi.acreate_experiment)
-    async def acomplete_experiment(
-        self,
-        experiment_id: str,
-        project: typing.Optional[str] = None,
-        project_id: typing.Optional[str] = None,
-        session_id: typing.Optional[str] = None,
-        session_reference_id: typing.Optional[str] = None,
-        parent_id: typing.Optional[str] = None,
-        parent_reference_id: typing.Optional[str] = None,
-        inputs: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = None,
-        source: typing.Optional[str] = None,
-        metadata: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = None,
-        save: typing.Optional[bool] = None,
-        source_datapoint_id: typing.Optional[str] = None,
-        provider_api_keys: typing.Optional[ProviderApiKeys] = None,
-        num_samples: typing.Optional[int] = None,
-        stream: typing.Optional[bool] = None,
-        user: typing.Optional[str] = None,
-        seed: typing.Optional[int] = None,
-        return_inputs: typing.Optional[bool] = None,
-        logprobs: typing.Optional[int] = None,
-        suffix: typing.Optional[str] = None,
-        **kwargs,
-    ):
-        return await self.completions.acreate_experiment(
-            experiment_id=experiment_id,
-            project=project,
-            project_id=project_id,
-            session_id=session_id,
-            session_reference_id=session_reference_id,
-            parent_id=parent_id,
-            parent_reference_id=parent_reference_id,
-            inputs=inputs,
-            source=source,
-            metadata=metadata,
-            save=save,
-            source_datapoint_id=source_datapoint_id,
-            provider_api_keys=provider_api_keys,
-            num_samples=num_samples,
-            stream=stream,
-            user=user,
-            seed=seed,
-            return_inputs=return_inputs,
-            logprobs=logprobs,
-            suffix=suffix,
-            **kwargs,
-        )
-
-    @copy_signature(CompletionsApi.create_experiment)
-    def complete_experiment(
-        self,
-        experiment_id: str,
-        project: typing.Optional[str] = None,
-        project_id: typing.Optional[str] = None,
-        session_id: typing.Optional[str] = None,
-        session_reference_id: typing.Optional[str] = None,
-        parent_id: typing.Optional[str] = None,
-        parent_reference_id: typing.Optional[str] = None,
-        inputs: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = None,
-        source: typing.Optional[str] = None,
-        metadata: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = None,
-        save: typing.Optional[bool] = None,
-        source_datapoint_id: typing.Optional[str] = None,
-        provider_api_keys: typing.Optional[ProviderApiKeys] = None,
-        num_samples: typing.Optional[int] = None,
-        stream: typing.Optional[bool] = None,
-        user: typing.Optional[str] = None,
-        seed: typing.Optional[int] = None,
-        return_inputs: typing.Optional[bool] = None,
-        logprobs: typing.Optional[int] = None,
-        suffix: typing.Optional[str] = None,
-    ):
-        return self.completions.create_experiment(
-            experiment_id=experiment_id,
-            project=project,
-            project_id=project_id,
-            session_id=session_id,
-            session_reference_id=session_reference_id,
-            parent_id=parent_id,
-            parent_reference_id=parent_reference_id,
-            inputs=inputs,
-            source=source,
-            metadata=metadata,
-            save=save,
-            source_datapoint_id=source_datapoint_id,
-            provider_api_keys=provider_api_keys,
-            num_samples=num_samples,
-            stream=stream,
-            user=user,
-            seed=seed,
-            return_inputs=return_inputs,
-            logprobs=logprobs,
-            suffix=suffix,
-        )
-
     @copy_signature(CompletionsApi.acreate_model_config)
     async def acomplete_model_configuration(
         self,
@@ -912,7 +701,7 @@ class Humanloop(ClientCustom):
         self,
         body: typing.Optional[FeedbackSubmitRequest] = None,
         type: typing.Optional[typing.Union[FeedbackType, str]] = None,
-        value: typing.Optional[str] = None,
+        value: typing.Optional[typing.Union[bool, typing.Union[int, float], typing.List[str], str]] = None,
         data_id: typing.Optional[str] = None,
         user: typing.Optional[str] = None,
         created_at: typing.Optional[datetime] = None,
@@ -935,7 +724,7 @@ class Humanloop(ClientCustom):
         self,
         body: typing.Optional[FeedbackSubmitRequest] = None,
         type: typing.Optional[typing.Union[FeedbackType, str]] = None,
-        value: typing.Optional[str] = None,
+        value: typing.Optional[typing.Union[bool, typing.Union[int, float], typing.List[str], str]] = None,
         data_id: typing.Optional[str] = None,
         user: typing.Optional[str] = None,
         created_at: typing.Optional[datetime] = None,
@@ -967,10 +756,9 @@ class Humanloop(ClientCustom):
         save: typing.Optional[bool] = None,
         source_datapoint_id: typing.Optional[str] = None,
         reference_id: typing.Optional[str] = None,
-        trial_id: typing.Optional[str] = None,
         messages: typing.Optional[typing.List[ChatMessageWithToolCall]] = None,
         output: typing.Optional[str] = None,
-        judgment: typing.Optional[typing.Union[bool, typing.Union[int, float]]] = None,
+        judgment: typing.Optional[typing.Union[bool, typing.Union[int, float], typing.List[str], str]] = None,
         config_id: typing.Optional[str] = None,
         config: typing.Optional[typing.Union[ModelConfigRequest, ToolConfigRequest]] = None,
         environment: typing.Optional[str] = None,
@@ -1002,7 +790,6 @@ class Humanloop(ClientCustom):
             save=save,
             source_datapoint_id=source_datapoint_id,
             reference_id=reference_id,
-            trial_id=trial_id,
             messages=messages,
             output=output,
             judgment=judgment,
@@ -1040,10 +827,9 @@ class Humanloop(ClientCustom):
         save: typing.Optional[bool] = None,
         source_datapoint_id: typing.Optional[str] = None,
         reference_id: typing.Optional[str] = None,
-        trial_id: typing.Optional[str] = None,
         messages: typing.Optional[typing.List[ChatMessageWithToolCall]] = None,
         output: typing.Optional[str] = None,
-        judgment: typing.Optional[typing.Union[bool, typing.Union[int, float]]] = None,
+        judgment: typing.Optional[typing.Union[bool, typing.Union[int, float], typing.List[str], str]] = None,
         config_id: typing.Optional[str] = None,
         config: typing.Optional[typing.Union[ModelConfigRequest, ToolConfigRequest]] = None,
         environment: typing.Optional[str] = None,
@@ -1074,7 +860,6 @@ class Humanloop(ClientCustom):
             save=save,
             source_datapoint_id=source_datapoint_id,
             reference_id=reference_id,
-            trial_id=trial_id,
             messages=messages,
             output=output,
             judgment=judgment,

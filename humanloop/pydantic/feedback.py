@@ -22,7 +22,7 @@ class Feedback(BaseModel):
     type: typing.Union[FeedbackType, str] = Field(alias='type')
 
     # The feedback value to set. This would be the appropriate text for 'correction' or 'comment', or a label to apply for 'rating', 'action', or 'issue'.
-    value: typing.Union[typing.Union[int, float], str] = Field(alias='value')
+    value: typing.Union[bool, typing.Union[int, float], typing.List[str], str] = Field(alias='value')
 
     # ID to associate the feedback to a previously logged datapoint.
     data_id: typing.Optional[str] = Field(None, alias='data_id')

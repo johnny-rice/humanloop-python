@@ -12,7 +12,6 @@
 from humanloop.paths.projects.post import CreateRaw
 from humanloop.paths.projects_id_feedback_types.post import CreateFeedbackTypeRaw
 from humanloop.paths.projects_id_active_config.delete import DeactivateConfigRaw
-from humanloop.paths.projects_id_active_experiment.delete import DeactivateExperimentRaw
 from humanloop.paths.projects_id.delete import DeleteRaw
 from humanloop.paths.projects_project_id_deployed_config_environment_id.delete import DeleteDeployedConfigRaw
 from humanloop.paths.projects_project_id_deploy_config.patch import DeployConfigRaw
@@ -30,7 +29,6 @@ class ProjectsApiRaw(
     CreateRaw,
     CreateFeedbackTypeRaw,
     DeactivateConfigRaw,
-    DeactivateExperimentRaw,
     DeleteRaw,
     DeleteDeployedConfigRaw,
     DeployConfigRaw,

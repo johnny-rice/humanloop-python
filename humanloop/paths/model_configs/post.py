@@ -146,7 +146,6 @@ class BaseApi(api_client.Api):
         response_format: typing.Optional[ResponseFormat] = None,
         project: typing.Optional[str] = None,
         project_id: typing.Optional[str] = None,
-        experiment: typing.Optional[str] = None,
         prompt_template: typing.Optional[str] = None,
         chat_template: typing.Optional[typing.List[ChatMessageWithToolCall]] = None,
         endpoint: typing.Optional[ModelEndpoints] = None,
@@ -184,8 +183,6 @@ class BaseApi(api_client.Api):
             _body["project"] = project
         if project_id is not None:
             _body["project_id"] = project_id
-        if experiment is not None:
-            _body["experiment"] = experiment
         if prompt_template is not None:
             _body["prompt_template"] = prompt_template
         if chat_template is not None:
@@ -416,7 +413,6 @@ class RegisterRaw(BaseApi):
         response_format: typing.Optional[ResponseFormat] = None,
         project: typing.Optional[str] = None,
         project_id: typing.Optional[str] = None,
-        experiment: typing.Optional[str] = None,
         prompt_template: typing.Optional[str] = None,
         chat_template: typing.Optional[typing.List[ChatMessageWithToolCall]] = None,
         endpoint: typing.Optional[ModelEndpoints] = None,
@@ -443,7 +439,6 @@ class RegisterRaw(BaseApi):
             response_format=response_format,
             project=project,
             project_id=project_id,
-            experiment=experiment,
             prompt_template=prompt_template,
             chat_template=chat_template,
             endpoint=endpoint,
@@ -471,7 +466,6 @@ class RegisterRaw(BaseApi):
         response_format: typing.Optional[ResponseFormat] = None,
         project: typing.Optional[str] = None,
         project_id: typing.Optional[str] = None,
-        experiment: typing.Optional[str] = None,
         prompt_template: typing.Optional[str] = None,
         chat_template: typing.Optional[typing.List[ChatMessageWithToolCall]] = None,
         endpoint: typing.Optional[ModelEndpoints] = None,
@@ -496,7 +490,6 @@ class RegisterRaw(BaseApi):
             response_format=response_format,
             project=project,
             project_id=project_id,
-            experiment=experiment,
             prompt_template=prompt_template,
             chat_template=chat_template,
             endpoint=endpoint,
@@ -525,7 +518,6 @@ class Register(BaseApi):
         response_format: typing.Optional[ResponseFormat] = None,
         project: typing.Optional[str] = None,
         project_id: typing.Optional[str] = None,
-        experiment: typing.Optional[str] = None,
         prompt_template: typing.Optional[str] = None,
         chat_template: typing.Optional[typing.List[ChatMessageWithToolCall]] = None,
         endpoint: typing.Optional[ModelEndpoints] = None,
@@ -549,7 +541,6 @@ class Register(BaseApi):
             response_format=response_format,
             project=project,
             project_id=project_id,
-            experiment=experiment,
             prompt_template=prompt_template,
             chat_template=chat_template,
             endpoint=endpoint,
@@ -578,7 +569,6 @@ class Register(BaseApi):
         response_format: typing.Optional[ResponseFormat] = None,
         project: typing.Optional[str] = None,
         project_id: typing.Optional[str] = None,
-        experiment: typing.Optional[str] = None,
         prompt_template: typing.Optional[str] = None,
         chat_template: typing.Optional[typing.List[ChatMessageWithToolCall]] = None,
         endpoint: typing.Optional[ModelEndpoints] = None,
@@ -601,7 +591,6 @@ class Register(BaseApi):
             response_format=response_format,
             project=project,
             project_id=project_id,
-            experiment=experiment,
             prompt_template=prompt_template,
             chat_template=chat_template,
             endpoint=endpoint,
@@ -632,7 +621,6 @@ class ApiForpost(BaseApi):
         response_format: typing.Optional[ResponseFormat] = None,
         project: typing.Optional[str] = None,
         project_id: typing.Optional[str] = None,
-        experiment: typing.Optional[str] = None,
         prompt_template: typing.Optional[str] = None,
         chat_template: typing.Optional[typing.List[ChatMessageWithToolCall]] = None,
         endpoint: typing.Optional[ModelEndpoints] = None,
@@ -659,7 +647,6 @@ class ApiForpost(BaseApi):
             response_format=response_format,
             project=project,
             project_id=project_id,
-            experiment=experiment,
             prompt_template=prompt_template,
             chat_template=chat_template,
             endpoint=endpoint,
@@ -687,7 +674,6 @@ class ApiForpost(BaseApi):
         response_format: typing.Optional[ResponseFormat] = None,
         project: typing.Optional[str] = None,
         project_id: typing.Optional[str] = None,
-        experiment: typing.Optional[str] = None,
         prompt_template: typing.Optional[str] = None,
         chat_template: typing.Optional[typing.List[ChatMessageWithToolCall]] = None,
         endpoint: typing.Optional[ModelEndpoints] = None,
@@ -712,7 +698,6 @@ class ApiForpost(BaseApi):
             response_format=response_format,
             project=project,
             project_id=project_id,
-            experiment=experiment,
             prompt_template=prompt_template,
             chat_template=chat_template,
             endpoint=endpoint,

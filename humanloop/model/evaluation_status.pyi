@@ -48,7 +48,3 @@ class EvaluationStatus(
     @schemas.classproperty
     def CANCELLED(cls):
         return cls("cancelled")
-    
-    @schemas.classproperty
-    def FAILED(cls):
-        return cls("failed")

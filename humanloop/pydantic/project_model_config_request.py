@@ -67,9 +67,6 @@ class ProjectModelConfigRequest(BaseModel):
     # Unique project ID
     project_id: typing.Optional[str] = Field(None, alias='project_id')
 
-    # If specified, the model config will be added to this experiment. Experiments are used for A/B testing and optimizing hyperparameters.
-    experiment: typing.Optional[str] = Field(None, alias='experiment')
-
     # Prompt template that will take your specified inputs to form your final request to the provider model. NB: Input variables within the prompt template should be specified with syntax: {{INPUT_NAME}}.
     prompt_template: typing.Optional[str] = Field(None, alias='prompt_template')
 

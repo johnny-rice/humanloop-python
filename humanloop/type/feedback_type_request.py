@@ -21,14 +21,14 @@ RequiredFeedbackTypeRequest = TypedDict("RequiredFeedbackTypeRequest", {
     # The type of feedback to update.
     "type": str,
 
+    # The data type associated to this feedback type; whether it is a 'text'/'select'/'multi_select'.
+    "class": FeedbackClass,
+
     })
 
 OptionalFeedbackTypeRequest = TypedDict("OptionalFeedbackTypeRequest", {
     # The feedback values to be available. This field should only be populated when updating a 'select' or 'multi_select' feedback class.
     "values": typing.List[FeedbackLabelRequest],
-
-    # The data type associated to this feedback type; whether it is a 'text'/'select'/'multi_select'. This is optional when updating the default feedback types (i.e. when `type` is 'rating', 'action' or 'issue').
-    "class": FeedbackClass,
     }, total=False)
 
 class FeedbackTypeRequest(RequiredFeedbackTypeRequest, OptionalFeedbackTypeRequest):

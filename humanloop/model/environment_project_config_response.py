@@ -48,8 +48,6 @@ class EnvironmentProjectConfigResponse(
             environment_tag = schemas.StrSchema
             model_config_id = schemas.StrSchema
             model_config_name = schemas.StrSchema
-            experiment_id = schemas.StrSchema
-            experiment_name = schemas.StrSchema
             __annotations__ = {
                 "project_id": project_id,
                 "project_name": project_name,
@@ -58,8 +56,6 @@ class EnvironmentProjectConfigResponse(
                 "environment_tag": environment_tag,
                 "model_config_id": model_config_id,
                 "model_config_name": model_config_name,
-                "experiment_id": experiment_id,
-                "experiment_name": experiment_name,
             }
     
     environment_id: MetaOapg.properties.environment_id
@@ -90,15 +86,9 @@ class EnvironmentProjectConfigResponse(
     def __getitem__(self, name: typing_extensions.Literal["model_config_name"]) -> MetaOapg.properties.model_config_name: ...
     
     @typing.overload
-    def __getitem__(self, name: typing_extensions.Literal["experiment_id"]) -> MetaOapg.properties.experiment_id: ...
-    
-    @typing.overload
-    def __getitem__(self, name: typing_extensions.Literal["experiment_name"]) -> MetaOapg.properties.experiment_name: ...
-    
-    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["project_id", "project_name", "environment_id", "environment_name", "environment_tag", "model_config_id", "model_config_name", "experiment_id", "experiment_name", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["project_id", "project_name", "environment_id", "environment_name", "environment_tag", "model_config_id", "model_config_name", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -125,15 +115,9 @@ class EnvironmentProjectConfigResponse(
     def get_item_oapg(self, name: typing_extensions.Literal["model_config_name"]) -> typing.Union[MetaOapg.properties.model_config_name, schemas.Unset]: ...
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["experiment_id"]) -> typing.Union[MetaOapg.properties.experiment_id, schemas.Unset]: ...
-    
-    @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["experiment_name"]) -> typing.Union[MetaOapg.properties.experiment_name, schemas.Unset]: ...
-    
-    @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["project_id", "project_name", "environment_id", "environment_name", "environment_tag", "model_config_id", "model_config_name", "experiment_id", "experiment_name", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["project_id", "project_name", "environment_id", "environment_name", "environment_tag", "model_config_id", "model_config_name", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -147,8 +131,6 @@ class EnvironmentProjectConfigResponse(
         environment_name: typing.Union[MetaOapg.properties.environment_name, str, ],
         model_config_id: typing.Union[MetaOapg.properties.model_config_id, str, schemas.Unset] = schemas.unset,
         model_config_name: typing.Union[MetaOapg.properties.model_config_name, str, schemas.Unset] = schemas.unset,
-        experiment_id: typing.Union[MetaOapg.properties.experiment_id, str, schemas.Unset] = schemas.unset,
-        experiment_name: typing.Union[MetaOapg.properties.experiment_name, str, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'EnvironmentProjectConfigResponse':
@@ -162,8 +144,6 @@ class EnvironmentProjectConfigResponse(
             environment_name=environment_name,
             model_config_id=model_config_id,
             model_config_name=model_config_name,
-            experiment_id=experiment_id,
-            experiment_name=experiment_name,
             _configuration=_configuration,
             **kwargs,
         )

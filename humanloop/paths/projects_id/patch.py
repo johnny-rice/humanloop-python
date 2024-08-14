@@ -34,17 +34,14 @@ from humanloop import schemas  # noqa: F401
 
 from humanloop.model.project_response import ProjectResponse as ProjectResponseSchema
 from humanloop.model.http_validation_error import HTTPValidationError as HTTPValidationErrorSchema
-from humanloop.model.positive_label import PositiveLabel as PositiveLabelSchema
 from humanloop.model.update_project_request import UpdateProjectRequest as UpdateProjectRequestSchema
 
 from humanloop.type.project_response import ProjectResponse
-from humanloop.type.positive_label import PositiveLabel
 from humanloop.type.update_project_request import UpdateProjectRequest
 from humanloop.type.http_validation_error import HTTPValidationError
 
 from ...api_client import Dictionary
 from humanloop.pydantic.update_project_request import UpdateProjectRequest as UpdateProjectRequestPydantic
-from humanloop.pydantic.positive_label import PositiveLabel as PositiveLabelPydantic
 from humanloop.pydantic.http_validation_error import HTTPValidationError as HTTPValidationErrorPydantic
 from humanloop.pydantic.project_response import ProjectResponse as ProjectResponsePydantic
 
@@ -147,9 +144,7 @@ class BaseApi(api_client.Api):
         self,
         id: str,
         name: typing.Optional[str] = None,
-        active_experiment_id: typing.Optional[str] = None,
         active_config_id: typing.Optional[str] = None,
-        positive_labels: typing.Optional[typing.List[PositiveLabel]] = None,
         directory_id: typing.Optional[str] = None,
     ) -> api_client.MappedArgs:
         args: api_client.MappedArgs = api_client.MappedArgs()
@@ -157,12 +152,8 @@ class BaseApi(api_client.Api):
         _body = {}
         if name is not None:
             _body["name"] = name
-        if active_experiment_id is not None:
-            _body["active_experiment_id"] = active_experiment_id
         if active_config_id is not None:
             _body["active_config_id"] = active_config_id
-        if positive_labels is not None:
-            _body["positive_labels"] = positive_labels
         if directory_id is not None:
             _body["directory_id"] = directory_id
         args.body = _body
@@ -407,9 +398,7 @@ class UpdateRaw(BaseApi):
         self,
         id: str,
         name: typing.Optional[str] = None,
-        active_experiment_id: typing.Optional[str] = None,
         active_config_id: typing.Optional[str] = None,
-        positive_labels: typing.Optional[typing.List[PositiveLabel]] = None,
         directory_id: typing.Optional[str] = None,
         **kwargs,
     ) -> typing.Union[
@@ -420,9 +409,7 @@ class UpdateRaw(BaseApi):
         args = self._update_mapped_args(
             id=id,
             name=name,
-            active_experiment_id=active_experiment_id,
             active_config_id=active_config_id,
-            positive_labels=positive_labels,
             directory_id=directory_id,
         )
         return await self._aupdate_oapg(
@@ -435,9 +422,7 @@ class UpdateRaw(BaseApi):
         self,
         id: str,
         name: typing.Optional[str] = None,
-        active_experiment_id: typing.Optional[str] = None,
         active_config_id: typing.Optional[str] = None,
-        positive_labels: typing.Optional[typing.List[PositiveLabel]] = None,
         directory_id: typing.Optional[str] = None,
     ) -> typing.Union[
         ApiResponseFor200,
@@ -446,9 +431,7 @@ class UpdateRaw(BaseApi):
         args = self._update_mapped_args(
             id=id,
             name=name,
-            active_experiment_id=active_experiment_id,
             active_config_id=active_config_id,
-            positive_labels=positive_labels,
             directory_id=directory_id,
         )
         return self._update_oapg(
@@ -462,9 +445,7 @@ class Update(BaseApi):
         self,
         id: str,
         name: typing.Optional[str] = None,
-        active_experiment_id: typing.Optional[str] = None,
         active_config_id: typing.Optional[str] = None,
-        positive_labels: typing.Optional[typing.List[PositiveLabel]] = None,
         directory_id: typing.Optional[str] = None,
         validate: bool = False,
         **kwargs,
@@ -472,9 +453,7 @@ class Update(BaseApi):
         raw_response = await self.raw.aupdate(
             id=id,
             name=name,
-            active_experiment_id=active_experiment_id,
             active_config_id=active_config_id,
-            positive_labels=positive_labels,
             directory_id=directory_id,
             **kwargs,
         )
@@ -487,18 +466,14 @@ class Update(BaseApi):
         self,
         id: str,
         name: typing.Optional[str] = None,
-        active_experiment_id: typing.Optional[str] = None,
         active_config_id: typing.Optional[str] = None,
-        positive_labels: typing.Optional[typing.List[PositiveLabel]] = None,
         directory_id: typing.Optional[str] = None,
         validate: bool = False,
     ) -> ProjectResponsePydantic:
         raw_response = self.raw.update(
             id=id,
             name=name,
-            active_experiment_id=active_experiment_id,
             active_config_id=active_config_id,
-            positive_labels=positive_labels,
             directory_id=directory_id,
         )
         if validate:
@@ -513,9 +488,7 @@ class ApiForpatch(BaseApi):
         self,
         id: str,
         name: typing.Optional[str] = None,
-        active_experiment_id: typing.Optional[str] = None,
         active_config_id: typing.Optional[str] = None,
-        positive_labels: typing.Optional[typing.List[PositiveLabel]] = None,
         directory_id: typing.Optional[str] = None,
         **kwargs,
     ) -> typing.Union[
@@ -526,9 +499,7 @@ class ApiForpatch(BaseApi):
         args = self._update_mapped_args(
             id=id,
             name=name,
-            active_experiment_id=active_experiment_id,
             active_config_id=active_config_id,
-            positive_labels=positive_labels,
             directory_id=directory_id,
         )
         return await self._aupdate_oapg(
@@ -541,9 +512,7 @@ class ApiForpatch(BaseApi):
         self,
         id: str,
         name: typing.Optional[str] = None,
-        active_experiment_id: typing.Optional[str] = None,
         active_config_id: typing.Optional[str] = None,
-        positive_labels: typing.Optional[typing.List[PositiveLabel]] = None,
         directory_id: typing.Optional[str] = None,
     ) -> typing.Union[
         ApiResponseFor200,
@@ -552,9 +521,7 @@ class ApiForpatch(BaseApi):
         args = self._update_mapped_args(
             id=id,
             name=name,
-            active_experiment_id=active_experiment_id,
             active_config_id=active_config_id,
-            positive_labels=positive_labels,
             directory_id=directory_id,
         )
         return self._update_oapg(

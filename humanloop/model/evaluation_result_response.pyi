@@ -65,6 +65,30 @@ class EvaluationResultResponse(
                 class MetaOapg:
                     any_of_0 = schemas.BoolSchema
                     any_of_1 = schemas.NumberSchema
+                    items = schemas.StrSchema
+                    
+                    
+                    class any_of_3(
+                        schemas.ListSchema
+                    ):
+                    
+                    
+                        class MetaOapg:
+                            items = schemas.StrSchema
+                    
+                        def __new__(
+                            cls,
+                            arg: typing.Union[typing.Tuple[typing.Union[MetaOapg.items, str, ]], typing.List[typing.Union[MetaOapg.items, str, ]]],
+                            _configuration: typing.Optional[schemas.Configuration] = None,
+                        ) -> 'any_of_3':
+                            return super().__new__(
+                                cls,
+                                arg,
+                                _configuration=_configuration,
+                            )
+                    
+                        def __getitem__(self, i: int) -> MetaOapg.items:
+                            return super().__getitem__(i)
                     
                     @classmethod
                     @functools.lru_cache()
@@ -79,6 +103,8 @@ class EvaluationResultResponse(
                         return [
                             cls.any_of_0,
                             cls.any_of_1,
+                            cls.items,
+                            cls.any_of_3,
                         ]
             
             

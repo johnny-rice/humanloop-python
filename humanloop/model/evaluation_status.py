@@ -40,7 +40,6 @@ class EvaluationStatus(
             "running": "RUNNING",
             "completed": "COMPLETED",
             "cancelled": "CANCELLED",
-            "failed": "FAILED",
         }
     
     @schemas.classproperty
@@ -58,7 +57,3 @@ class EvaluationStatus(
     @schemas.classproperty
     def CANCELLED(cls):
         return cls("cancelled")
-    
-    @schemas.classproperty
-    def FAILED(cls):
-        return cls("failed")

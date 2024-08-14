@@ -34,10 +34,15 @@ class FeedbackTypeRequest(
     class MetaOapg:
         required = {
             "type",
+            "class",
         }
         
         class properties:
             type = schemas.StrSchema
+        
+            @staticmethod
+            def _class() -> typing.Type['FeedbackClass']:
+                return FeedbackClass
             
             
             class values(
@@ -64,14 +69,10 @@ class FeedbackTypeRequest(
             
                 def __getitem__(self, i: int) -> 'FeedbackLabelRequest':
                     return super().__getitem__(i)
-        
-            @staticmethod
-            def _class() -> typing.Type['FeedbackClass']:
-                return FeedbackClass
             __annotations__ = {
                 "type": type,
-                "values": values,
                 "class": _class,
+                "values": values,
             }
     
     type: MetaOapg.properties.type
@@ -80,15 +81,15 @@ class FeedbackTypeRequest(
     def __getitem__(self, name: typing_extensions.Literal["type"]) -> MetaOapg.properties.type: ...
     
     @typing.overload
-    def __getitem__(self, name: typing_extensions.Literal["values"]) -> MetaOapg.properties.values: ...
+    def __getitem__(self, name: typing_extensions.Literal["class"]) -> 'FeedbackClass': ...
     
     @typing.overload
-    def __getitem__(self, name: typing_extensions.Literal["class"]) -> 'FeedbackClass': ...
+    def __getitem__(self, name: typing_extensions.Literal["values"]) -> MetaOapg.properties.values: ...
     
     @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["type", "values", "class", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["type", "class", "values", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -97,15 +98,15 @@ class FeedbackTypeRequest(
     def get_item_oapg(self, name: typing_extensions.Literal["type"]) -> MetaOapg.properties.type: ...
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["values"]) -> typing.Union[MetaOapg.properties.values, schemas.Unset]: ...
+    def get_item_oapg(self, name: typing_extensions.Literal["class"]) -> 'FeedbackClass': ...
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["class"]) -> typing.Union['FeedbackClass', schemas.Unset]: ...
+    def get_item_oapg(self, name: typing_extensions.Literal["values"]) -> typing.Union[MetaOapg.properties.values, schemas.Unset]: ...
     
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["type", "values", "class", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["type", "class", "values", ], str]):
         return super().get_item_oapg(name)
     
 

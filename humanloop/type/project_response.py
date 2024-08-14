@@ -16,7 +16,6 @@ from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 
 from humanloop.type.config_type import ConfigType
 from humanloop.type.evaluator_response import EvaluatorResponse
-from humanloop.type.experiment_response import ExperimentResponse
 from humanloop.type.feedback_types import FeedbackTypes
 from humanloop.type.project_config_response import ProjectConfigResponse
 from humanloop.type.project_user_response import ProjectUserResponse
@@ -46,10 +45,7 @@ class RequiredProjectResponse(TypedDict):
 
 
 class OptionalProjectResponse(TypedDict, total=False):
-    # Experiment that has been set as the project's active deployment. At most one of active_experiment and active_model_config can be set.
-    active_experiment: ExperimentResponse
-
-    # Config that has been set as the project's active deployment. At most one of active_experiment and active_model_config can be set.
+    # Config that has been set as the project's active deployment.
     active_config: ProjectConfigResponse
 
     config_type: ConfigType
