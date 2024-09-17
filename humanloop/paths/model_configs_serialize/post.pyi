@@ -454,6 +454,7 @@ class SerializeRaw(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Serialize a model config to a .prompt file format. """
         args = self._serialize_mapped_args(
             body=body,
             description=description,
@@ -654,6 +655,7 @@ class ApiForpost(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Serialize a model config to a .prompt file format. """
         args = self._serialize_mapped_args(
             body=body,
             description=description,

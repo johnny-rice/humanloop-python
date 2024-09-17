@@ -348,6 +348,7 @@ class ListDeployedConfigsRaw(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Get an array of environments with the deployed configs associated to your project. """
         args = self._list_deployed_configs_mapped_args(
             id=id,
         )
@@ -412,6 +413,7 @@ class ApiForget(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Get an array of environments with the deployed configs associated to your project. """
         args = self._list_deployed_configs_mapped_args(
             id=id,
         )

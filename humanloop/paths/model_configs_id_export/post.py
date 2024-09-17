@@ -358,6 +358,7 @@ class ExportRaw(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Export a model config to a .prompt file by ID. """
         args = self._export_mapped_args(
             id=id,
         )
@@ -422,6 +423,7 @@ class ApiForpost(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Export a model config to a .prompt file by ID. """
         args = self._export_mapped_args(
             id=id,
         )

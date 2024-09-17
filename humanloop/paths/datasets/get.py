@@ -292,6 +292,7 @@ class ListRaw(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Get all Datasets for an organization. """
         args = self._list_mapped_args(
         )
         return self._list_oapg(
@@ -346,6 +347,7 @@ class ApiForget(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Get all Datasets for an organization. """
         args = self._list_mapped_args(
         )
         return self._list_oapg(

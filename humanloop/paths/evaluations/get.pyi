@@ -469,6 +469,7 @@ class ListRaw(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Get the evaluations associated with a project.  Sorting and filtering are supported through query params for categorical columns and the `created_at` timestamp.  Sorting is supported for the `dataset`, `config`, `status` and `evaluator-{evaluator_id}` columns. Specify sorting with the `sort` query param, with values `{column}.{ordering}`. E.g. ?sort=dataset.asc&sort=status.desc will yield a multi-column sort. First by dataset then by status.  Filtering is supported for the `id`, `dataset`, `config` and `status` columns.  Specify filtering with the `id_filter`, `dataset_filter`, `config_filter` and `status_filter` query params.  E.g. ?dataset_filter=my_dataset&dataset_filter=my_other_dataset&status_filter=running will only show rows where the dataset is \"my_dataset\" or \"my_other_dataset\", and where the status is \"running\".  An additional date range filter is supported for the `created_at` column. Use the `start_date` and `end_date` query parameters to configure this. """
         args = self._list_mapped_args(
             project_id=project_id,
             id=id,
@@ -581,6 +582,7 @@ class ApiForget(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Get the evaluations associated with a project.  Sorting and filtering are supported through query params for categorical columns and the `created_at` timestamp.  Sorting is supported for the `dataset`, `config`, `status` and `evaluator-{evaluator_id}` columns. Specify sorting with the `sort` query param, with values `{column}.{ordering}`. E.g. ?sort=dataset.asc&sort=status.desc will yield a multi-column sort. First by dataset then by status.  Filtering is supported for the `id`, `dataset`, `config` and `status` columns.  Specify filtering with the `id_filter`, `dataset_filter`, `config_filter` and `status_filter` query params.  E.g. ?dataset_filter=my_dataset&dataset_filter=my_other_dataset&status_filter=running will only show rows where the dataset is \"my_dataset\" or \"my_other_dataset\", and where the status is \"running\".  An additional date range filter is supported for the `created_at` column. Use the `start_date` and `end_date` query parameters to configure this. """
         args = self._list_mapped_args(
             project_id=project_id,
             id=id,

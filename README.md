@@ -1700,6 +1700,7 @@ create_response = humanloop.evaluations.create(
     project_id="project_id_example",
     provider_api_keys={},
     hl_generated=True,
+    name="string_example",
 )
 ```
 
@@ -1727,6 +1728,10 @@ API keys required by each provider to make API calls. The API keys provided here
 ##### hl_generated: `bool`<a id="hl_generated-bool"></a>
 
 Whether the log generations for this evaluation should be performed by Humanloop. If `False`, the log generations should be submitted by the user via the API.
+
+##### name: `str`<a id="name-str"></a>
+
+Name of the Evaluation to help identify it.
 
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 

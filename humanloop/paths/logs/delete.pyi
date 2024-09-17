@@ -364,6 +364,7 @@ class DeleteRaw(BaseApi):
         ApiResponseFor204,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._delete_mapped_args(
             id=id,
         )
@@ -422,6 +423,7 @@ class ApiFordelete(BaseApi):
         ApiResponseFor204,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._delete_mapped_args(
             id=id,
         )

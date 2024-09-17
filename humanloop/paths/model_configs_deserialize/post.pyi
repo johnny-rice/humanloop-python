@@ -342,6 +342,7 @@ class DeserializeRaw(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Deserialize a model config from a .prompt file format. """
         args = self._deserialize_mapped_args(
             config=config,
         )
@@ -406,6 +407,7 @@ class ApiForpost(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Deserialize a model config from a .prompt file format. """
         args = self._deserialize_mapped_args(
             config=config,
         )

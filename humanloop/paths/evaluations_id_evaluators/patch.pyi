@@ -419,6 +419,7 @@ class AddEvaluatorsRaw(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Add evaluators to an existing evaluation run. """
         args = self._add_evaluators_mapped_args(
             id=id,
             evaluator_ids=evaluator_ids,
@@ -501,6 +502,7 @@ class ApiForpatch(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Add evaluators to an existing evaluation run. """
         args = self._add_evaluators_mapped_args(
             id=id,
             evaluator_ids=evaluator_ids,

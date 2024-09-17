@@ -424,6 +424,7 @@ class ListConfigsRaw(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Get an array of versions associated to your file. """
         args = self._list_configs_mapped_args(
             id=id,
             evaluation_aggregates=evaluation_aggregates,
@@ -498,6 +499,7 @@ class ApiForget(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Get an array of versions associated to your file. """
         args = self._list_configs_mapped_args(
             id=id,
             evaluation_aggregates=evaluation_aggregates,

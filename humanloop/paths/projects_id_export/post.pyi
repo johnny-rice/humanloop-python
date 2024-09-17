@@ -431,6 +431,7 @@ class ExportRaw(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Export all logged datapoints associated to your project.  Results are paginated and sorts the datapoints based on `created_at` in descending order. """
         args = self._export_mapped_args(
             id=id,
             page=page,
@@ -513,6 +514,7 @@ class ApiForpost(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Export all logged datapoints associated to your project.  Results are paginated and sorts the datapoints based on `created_at` in descending order. """
         args = self._export_mapped_args(
             id=id,
             page=page,

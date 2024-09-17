@@ -436,6 +436,7 @@ class CreateFeedbackTypeRaw(BaseApi):
         ApiResponseFor201,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._create_feedback_type_mapped_args(
             type=type,
             _class=_class,
@@ -530,6 +531,7 @@ class ApiForpost(BaseApi):
         ApiResponseFor201,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._create_feedback_type_mapped_args(
             type=type,
             _class=_class,

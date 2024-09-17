@@ -413,6 +413,7 @@ class UpdateRaw(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Update a testset by ID. """
         args = self._update_mapped_args(
             id=id,
             description=description,
@@ -495,6 +496,7 @@ class ApiForpatch(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Update a testset by ID. """
         args = self._update_mapped_args(
             id=id,
             description=description,

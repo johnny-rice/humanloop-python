@@ -471,6 +471,7 @@ class CreateRaw(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Create a completion by providing details of the model configuration in the request. """
         args = self._create_mapped_args(
             model_config=model_config,
             project=project,
@@ -687,6 +688,7 @@ class ApiForpost(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Create a completion by providing details of the model configuration in the request. """
         args = self._create_mapped_args(
             model_config=model_config,
             project=project,

@@ -465,6 +465,7 @@ class RegisterRaw(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Register a model config to a project.  If the project name provided does not exist, a new project will be created automatically.  If the model config is the first to be associated to the project, it will be set as the active model config. """
         args = self._register_mapped_args(
             model=model,
             description=description,
@@ -673,6 +674,7 @@ class ApiForpost(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Register a model config to a project.  If the project name provided does not exist, a new project will be created automatically.  If the model config is the first to be associated to the project, it will be set as the active model config. """
         args = self._register_mapped_args(
             model=model,
             description=description,

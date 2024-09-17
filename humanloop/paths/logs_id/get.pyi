@@ -348,6 +348,7 @@ class GetRaw(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Retrieve a log by log id. """
         args = self._get_mapped_args(
             id=id,
         )
@@ -412,6 +413,7 @@ class ApiForget(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Retrieve a log by log id. """
         args = self._get_mapped_args(
             id=id,
         )

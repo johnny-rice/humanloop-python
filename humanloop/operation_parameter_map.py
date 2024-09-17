@@ -535,6 +535,9 @@ operation_parameter_map = {
             {
                 'name': 'hl_generated'
             },
+            {
+                'name': 'name'
+            },
         ]
     },
     '/evaluations/{id}-GET': {

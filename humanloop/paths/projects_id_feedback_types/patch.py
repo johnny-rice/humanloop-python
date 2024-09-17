@@ -356,6 +356,7 @@ class UpdateFeedbackTypesRaw(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Update feedback types.  WARNING: This endpoint has been decommissioned and no longer works. Please use the v5 Human Evaluators API instead. """
         args = self._update_feedback_types_mapped_args(
             id=id,
         )
@@ -424,6 +425,7 @@ class ApiForpatch(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Update feedback types.  WARNING: This endpoint has been decommissioned and no longer works. Please use the v5 Human Evaluators API instead. """
         args = self._update_feedback_types_mapped_args(
             id=id,
         )

@@ -40,6 +40,7 @@ class FileType(
             "tool": "TOOL",
             "dataset": "DATASET",
             "evaluator": "EVALUATOR",
+            "flow": "FLOW",
         }
     
     @schemas.classproperty
@@ -57,3 +58,7 @@ class FileType(
     @schemas.classproperty
     def EVALUATOR(cls):
         return cls("evaluator")
+    
+    @schemas.classproperty
+    def FLOW(cls):
+        return cls("flow")

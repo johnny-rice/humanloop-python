@@ -492,6 +492,7 @@ class LogRaw(BaseApi):
         ApiResponseFor201,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Log an external generation to an evaluation run for a datapoint.  The run must have status 'running'. """
         args = self._log_mapped_args(
             datapoint_id=datapoint_id,
             log=log,
@@ -584,6 +585,7 @@ class ApiForpost(BaseApi):
         ApiResponseFor201,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Log an external generation to an evaluation run for a datapoint.  The run must have status 'running'. """
         args = self._log_mapped_args(
             datapoint_id=datapoint_id,
             log=log,

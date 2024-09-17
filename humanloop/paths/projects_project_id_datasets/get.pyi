@@ -350,6 +350,7 @@ class ListAllForProjectRaw(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Get all datasets for a project. """
         args = self._list_all_for_project_mapped_args(
             project_id=project_id,
         )
@@ -418,6 +419,7 @@ class ApiForget(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Get all datasets for a project. """
         args = self._list_all_for_project_mapped_args(
             project_id=project_id,
         )

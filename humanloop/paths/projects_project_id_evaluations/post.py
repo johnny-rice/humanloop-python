@@ -154,6 +154,7 @@ class BaseApi(api_client.Api):
         project_id: str,
         provider_api_keys: typing.Optional[ProviderApiKeys] = None,
         hl_generated: typing.Optional[bool] = None,
+        name: typing.Optional[str] = None,
     ) -> api_client.MappedArgs:
         args: api_client.MappedArgs = api_client.MappedArgs()
         _path_params = {}
@@ -168,6 +169,8 @@ class BaseApi(api_client.Api):
             _body["provider_api_keys"] = provider_api_keys
         if hl_generated is not None:
             _body["hl_generated"] = hl_generated
+        if name is not None:
+            _body["name"] = name
         args.body = _body
         if project_id is not None:
             _path_params["project_id"] = project_id
@@ -414,6 +417,7 @@ class CreateRaw(BaseApi):
         project_id: str,
         provider_api_keys: typing.Optional[ProviderApiKeys] = None,
         hl_generated: typing.Optional[bool] = None,
+        name: typing.Optional[str] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor201Async,
@@ -427,6 +431,7 @@ class CreateRaw(BaseApi):
             project_id=project_id,
             provider_api_keys=provider_api_keys,
             hl_generated=hl_generated,
+            name=name,
         )
         return await self._acreate_oapg(
             body=args.body,
@@ -442,10 +447,12 @@ class CreateRaw(BaseApi):
         project_id: str,
         provider_api_keys: typing.Optional[ProviderApiKeys] = None,
         hl_generated: typing.Optional[bool] = None,
+        name: typing.Optional[str] = None,
     ) -> typing.Union[
         ApiResponseFor201,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Create an evaluation. """
         args = self._create_mapped_args(
             config_id=config_id,
             evaluator_ids=evaluator_ids,
@@ -453,6 +460,7 @@ class CreateRaw(BaseApi):
             project_id=project_id,
             provider_api_keys=provider_api_keys,
             hl_generated=hl_generated,
+            name=name,
         )
         return self._create_oapg(
             body=args.body,
@@ -469,6 +477,7 @@ class Create(BaseApi):
         project_id: str,
         provider_api_keys: typing.Optional[ProviderApiKeys] = None,
         hl_generated: typing.Optional[bool] = None,
+        name: typing.Optional[str] = None,
         validate: bool = False,
         **kwargs,
     ) -> EvaluationResponsePydantic:
@@ -479,6 +488,7 @@ class Create(BaseApi):
             project_id=project_id,
             provider_api_keys=provider_api_keys,
             hl_generated=hl_generated,
+            name=name,
             **kwargs,
         )
         if validate:
@@ -494,6 +504,7 @@ class Create(BaseApi):
         project_id: str,
         provider_api_keys: typing.Optional[ProviderApiKeys] = None,
         hl_generated: typing.Optional[bool] = None,
+        name: typing.Optional[str] = None,
         validate: bool = False,
     ) -> EvaluationResponsePydantic:
         raw_response = self.raw.create(
@@ -503,6 +514,7 @@ class Create(BaseApi):
             project_id=project_id,
             provider_api_keys=provider_api_keys,
             hl_generated=hl_generated,
+            name=name,
         )
         if validate:
             return EvaluationResponsePydantic(**raw_response.body)
@@ -520,6 +532,7 @@ class ApiForpost(BaseApi):
         project_id: str,
         provider_api_keys: typing.Optional[ProviderApiKeys] = None,
         hl_generated: typing.Optional[bool] = None,
+        name: typing.Optional[str] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor201Async,
@@ -533,6 +546,7 @@ class ApiForpost(BaseApi):
             project_id=project_id,
             provider_api_keys=provider_api_keys,
             hl_generated=hl_generated,
+            name=name,
         )
         return await self._acreate_oapg(
             body=args.body,
@@ -548,10 +562,12 @@ class ApiForpost(BaseApi):
         project_id: str,
         provider_api_keys: typing.Optional[ProviderApiKeys] = None,
         hl_generated: typing.Optional[bool] = None,
+        name: typing.Optional[str] = None,
     ) -> typing.Union[
         ApiResponseFor201,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Create an evaluation. """
         args = self._create_mapped_args(
             config_id=config_id,
             evaluator_ids=evaluator_ids,
@@ -559,6 +575,7 @@ class ApiForpost(BaseApi):
             project_id=project_id,
             provider_api_keys=provider_api_keys,
             hl_generated=hl_generated,
+            name=name,
         )
         return self._create_oapg(
             body=args.body,

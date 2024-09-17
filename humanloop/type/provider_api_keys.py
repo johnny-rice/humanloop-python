@@ -27,6 +27,8 @@ class OptionalProviderApiKeys(TypedDict, total=False):
 
     anthropic: str
 
+    bedrock: str
+
     cohere: str
 
     openai_azure: str

@@ -50,6 +50,10 @@ class ModelProviders(
         return cls("anthropic")
     
     @schemas.classproperty
+    def BEDROCK(cls):
+        return cls("bedrock")
+    
+    @schemas.classproperty
     def COHERE(cls):
         return cls("cohere")
     

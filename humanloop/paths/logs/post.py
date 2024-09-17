@@ -541,6 +541,7 @@ class LogRaw(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Log a datapoint or array of datapoints to your Humanloop project. """
         args = self._log_mapped_args(
             body=body,
             project=project,
@@ -845,6 +846,7 @@ class ApiForpost(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Log a datapoint or array of datapoints to your Humanloop project. """
         args = self._log_mapped_args(
             body=body,
             project=project,

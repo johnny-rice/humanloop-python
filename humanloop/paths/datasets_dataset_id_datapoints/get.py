@@ -440,6 +440,7 @@ class ListDatapointsRaw(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Get datapoints for a dataset. """
         args = self._list_datapoints_mapped_args(
             dataset_id=dataset_id,
             page=page,
@@ -522,6 +523,7 @@ class ApiForget(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Get datapoints for a dataset. """
         args = self._list_datapoints_mapped_args(
             dataset_id=dataset_id,
             page=page,

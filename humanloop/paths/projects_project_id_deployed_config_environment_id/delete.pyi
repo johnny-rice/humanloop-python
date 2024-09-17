@@ -361,6 +361,7 @@ class DeleteDeployedConfigRaw(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Remove the version deployed to environment.  This has no effect if the project does not have an active version set. """
         args = self._delete_deployed_config_mapped_args(
             project_id=project_id,
             environment_id=environment_id,
@@ -433,6 +434,7 @@ class ApiFordelete(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Remove the version deployed to environment.  This has no effect if the project does not have an active version set. """
         args = self._delete_deployed_config_mapped_args(
             project_id=project_id,
             environment_id=environment_id,

@@ -428,6 +428,7 @@ class UpdateRaw(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Update a logged datapoint in your Humanloop project. """
         args = self._update_mapped_args(
             id=id,
             output=output,
@@ -518,6 +519,7 @@ class ApiForpatch(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Update a logged datapoint in your Humanloop project. """
         args = self._update_mapped_args(
             id=id,
             output=output,

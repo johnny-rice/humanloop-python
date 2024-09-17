@@ -422,6 +422,7 @@ class UpdateByRefRaw(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Update a logged datapoint by its reference ID.  The `reference_id` query parameter must be provided, and refers to the `reference_id` of a previously-logged datapoint. """
         args = self._update_by_ref_mapped_args(
             reference_id=reference_id,
             output=output,
@@ -512,6 +513,7 @@ class ApiForpatch(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Update a logged datapoint by its reference ID.  The `reference_id` query parameter must be provided, and refers to the `reference_id` of a previously-logged datapoint. """
         args = self._update_by_ref_mapped_args(
             reference_id=reference_id,
             output=output,

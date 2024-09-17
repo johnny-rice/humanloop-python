@@ -38,6 +38,7 @@ class ProviderApiKeys(
             ai21 = schemas.StrSchema
             mock = schemas.StrSchema
             anthropic = schemas.StrSchema
+            bedrock = schemas.StrSchema
             cohere = schemas.StrSchema
             openai_azure = schemas.StrSchema
             openai_azure_endpoint = schemas.StrSchema
@@ -46,6 +47,7 @@ class ProviderApiKeys(
                 "ai21": ai21,
                 "mock": mock,
                 "anthropic": anthropic,
+                "bedrock": bedrock,
                 "cohere": cohere,
                 "openai_azure": openai_azure,
                 "openai_azure_endpoint": openai_azure_endpoint,
@@ -64,6 +66,9 @@ class ProviderApiKeys(
     def __getitem__(self, name: typing_extensions.Literal["anthropic"]) -> MetaOapg.properties.anthropic: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["bedrock"]) -> MetaOapg.properties.bedrock: ...
+    
+    @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["cohere"]) -> MetaOapg.properties.cohere: ...
     
     @typing.overload
@@ -75,7 +80,7 @@ class ProviderApiKeys(
     @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["openai", "ai21", "mock", "anthropic", "cohere", "openai_azure", "openai_azure_endpoint", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["openai", "ai21", "mock", "anthropic", "bedrock", "cohere", "openai_azure", "openai_azure_endpoint", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -93,6 +98,9 @@ class ProviderApiKeys(
     def get_item_oapg(self, name: typing_extensions.Literal["anthropic"]) -> typing.Union[MetaOapg.properties.anthropic, schemas.Unset]: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["bedrock"]) -> typing.Union[MetaOapg.properties.bedrock, schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["cohere"]) -> typing.Union[MetaOapg.properties.cohere, schemas.Unset]: ...
     
     @typing.overload
@@ -104,7 +112,7 @@ class ProviderApiKeys(
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["openai", "ai21", "mock", "anthropic", "cohere", "openai_azure", "openai_azure_endpoint", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["openai", "ai21", "mock", "anthropic", "bedrock", "cohere", "openai_azure", "openai_azure_endpoint", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -115,6 +123,7 @@ class ProviderApiKeys(
         ai21: typing.Union[MetaOapg.properties.ai21, str, schemas.Unset] = schemas.unset,
         mock: typing.Union[MetaOapg.properties.mock, str, schemas.Unset] = schemas.unset,
         anthropic: typing.Union[MetaOapg.properties.anthropic, str, schemas.Unset] = schemas.unset,
+        bedrock: typing.Union[MetaOapg.properties.bedrock, str, schemas.Unset] = schemas.unset,
         cohere: typing.Union[MetaOapg.properties.cohere, str, schemas.Unset] = schemas.unset,
         openai_azure: typing.Union[MetaOapg.properties.openai_azure, str, schemas.Unset] = schemas.unset,
         openai_azure_endpoint: typing.Union[MetaOapg.properties.openai_azure_endpoint, str, schemas.Unset] = schemas.unset,
@@ -128,6 +137,7 @@ class ProviderApiKeys(
             ai21=ai21,
             mock=mock,
             anthropic=anthropic,
+            bedrock=bedrock,
             cohere=cohere,
             openai_azure=openai_azure,
             openai_azure_endpoint=openai_azure_endpoint,

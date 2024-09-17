@@ -480,6 +480,7 @@ class CreateDeployedRaw(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Get a chat response using the project's active deployment.  The active deployment can be a specific model configuration. """
         args = self._create_deployed_mapped_args(
             messages=messages,
             project=project,
@@ -712,6 +713,7 @@ class ApiForpost(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Get a chat response using the project's active deployment.  The active deployment can be a specific model configuration. """
         args = self._create_deployed_mapped_args(
             messages=messages,
             project=project,

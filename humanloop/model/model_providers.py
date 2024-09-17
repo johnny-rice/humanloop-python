@@ -40,6 +40,7 @@ class ModelProviders(
             "openai_azure": "OPENAI_AZURE",
             "mock": "MOCK",
             "anthropic": "ANTHROPIC",
+            "bedrock": "BEDROCK",
             "cohere": "COHERE",
             "replicate": "REPLICATE",
             "google": "GOOGLE",
@@ -61,6 +62,10 @@ class ModelProviders(
     @schemas.classproperty
     def ANTHROPIC(cls):
         return cls("anthropic")
+    
+    @schemas.classproperty
+    def BEDROCK(cls):
+        return cls("bedrock")
     
     @schemas.classproperty
     def COHERE(cls):

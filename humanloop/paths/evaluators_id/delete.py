@@ -349,6 +349,7 @@ class DeleteRaw(BaseApi):
         ApiResponseFor204,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Delete an evaluator within your organization. """
         args = self._delete_mapped_args(
             id=id,
         )
@@ -407,6 +408,7 @@ class ApiFordelete(BaseApi):
         ApiResponseFor204,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Delete an evaluator within your organization. """
         args = self._delete_mapped_args(
             id=id,
         )

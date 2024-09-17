@@ -492,6 +492,7 @@ class ResultRaw(BaseApi):
         ApiResponseFor201,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Log an evaluation result to an evaluation run.  The run must have status 'running'. One of `result` or `error` must be provided. """
         args = self._result_mapped_args(
             log_id=log_id,
             evaluator_id=evaluator_id,
@@ -600,6 +601,7 @@ class ApiForpost(BaseApi):
         ApiResponseFor201,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Log an evaluation result to an evaluation run.  The run must have status 'running'. One of `result` or `error` must be provided. """
         args = self._result_mapped_args(
             log_id=log_id,
             evaluator_id=evaluator_id,

@@ -419,6 +419,7 @@ class UpdateRaw(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Update a specific project.  Set the project's active model config by passing `active_model_config_id`. These will be set to the Default environment unless a list of environments are also passed in specifically detailing which environments to assign the active config. """
         args = self._update_mapped_args(
             id=id,
             name=name,
@@ -509,6 +510,7 @@ class ApiForpatch(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Update a specific project.  Set the project's active model config by passing `active_model_config_id`. These will be set to the Default environment unless a list of environments are also passed in specifically detailing which environments to assign the active config. """
         args = self._update_mapped_args(
             id=id,
             name=name,

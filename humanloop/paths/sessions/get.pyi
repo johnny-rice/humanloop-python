@@ -383,6 +383,7 @@ class ListRaw(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Get a page of sessions. """
         args = self._list_mapped_args(
             project_id=project_id,
             page=page,
@@ -463,6 +464,7 @@ class ApiForget(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Get a page of sessions. """
         args = self._list_mapped_args(
             project_id=project_id,
             page=page,

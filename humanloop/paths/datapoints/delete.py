@@ -286,6 +286,7 @@ class DeleteRaw(BaseApi):
         ApiResponseFor204,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Delete a list of datapoints by their IDs.  WARNING: This endpoint has been decommissioned and no longer works. Please use the v5 datasets API instead. """
         args = self._delete_mapped_args(
         )
         return self._delete_oapg(
@@ -338,6 +339,7 @@ class ApiFordelete(BaseApi):
         ApiResponseFor204,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Delete a list of datapoints by their IDs.  WARNING: This endpoint has been decommissioned and no longer works. Please use the v5 datasets API instead. """
         args = self._delete_mapped_args(
         )
         return self._delete_oapg(

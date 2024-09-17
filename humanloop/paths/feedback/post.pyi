@@ -379,6 +379,7 @@ class FeedbackRaw(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Submit an array of feedback for existing `data_ids` """
         args = self._feedback_mapped_args(
             body=body,
             type=type,
@@ -491,6 +492,7 @@ class ApiForpost(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Submit an array of feedback for existing `data_ids` """
         args = self._feedback_mapped_args(
             body=body,
             type=type,

@@ -348,6 +348,7 @@ class CreateRaw(BaseApi):
         ApiResponseFor201,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Create a new project. """
         args = self._create_mapped_args(
             name=name,
             directory_id=directory_id,
@@ -420,6 +421,7 @@ class ApiForpost(BaseApi):
         ApiResponseFor201,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Create a new project. """
         args = self._create_mapped_args(
             name=name,
             directory_id=directory_id,

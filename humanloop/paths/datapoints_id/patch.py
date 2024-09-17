@@ -359,6 +359,7 @@ class UpdateRaw(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Edit the input, messages and criteria fields of a datapoint.  WARNING: This endpoint has been decommissioned and no longer works. Please use the v5 datasets API instead. """
         args = self._update_mapped_args(
             id=id,
         )
@@ -427,6 +428,7 @@ class ApiForpatch(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Edit the input, messages and criteria fields of a datapoint.  WARNING: This endpoint has been decommissioned and no longer works. Please use the v5 datasets API instead. """
         args = self._update_mapped_args(
             id=id,
         )

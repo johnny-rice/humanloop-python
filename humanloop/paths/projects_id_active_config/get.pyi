@@ -415,6 +415,7 @@ class GetActiveConfigRaw(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Retrieves a config to use to execute your model.  A config will be selected based on the project's active config settings. """
         args = self._get_active_config_mapped_args(
             id=id,
             environment=environment,
@@ -489,6 +490,7 @@ class ApiForget(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Retrieves a config to use to execute your model.  A config will be selected based on the project's active config settings. """
         args = self._get_active_config_mapped_args(
             id=id,
             environment=environment,

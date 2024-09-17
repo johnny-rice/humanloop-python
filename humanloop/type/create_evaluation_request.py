@@ -34,5 +34,8 @@ class OptionalCreateEvaluationRequest(TypedDict, total=False):
     # Whether the log generations for this evaluation should be performed by Humanloop. If `False`, the log generations should be submitted by the user via the API.
     hl_generated: bool
 
+    # Name of the Evaluation to help identify it.
+    name: str
+
 class CreateEvaluationRequest(RequiredCreateEvaluationRequest, OptionalCreateEvaluationRequest):
     pass

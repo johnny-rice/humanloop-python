@@ -459,6 +459,7 @@ class CreateDeployedRaw(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Create a completion using the project's active deployment.  The active deployment can be a specific model configuration. """
         args = self._create_deployed_mapped_args(
             project=project,
             project_id=project_id,
@@ -675,6 +676,7 @@ class ApiForpost(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Create a completion using the project's active deployment.  The active deployment can be a specific model configuration. """
         args = self._create_deployed_mapped_args(
             project=project,
             project_id=project_id,

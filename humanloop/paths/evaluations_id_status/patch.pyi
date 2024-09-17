@@ -410,6 +410,7 @@ class UpdateStatusRaw(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Update the status of an evaluation run.  Can only be used to update the status of an evaluation run that uses external or human evaluators. The evaluation must currently have status 'running' if swithcing to completed, or it must have status 'completed' if switching back to 'running'. """
         args = self._update_status_mapped_args(
             status=status,
             id=id,
@@ -484,6 +485,7 @@ class ApiForpatch(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Update the status of an evaluation run.  Can only be used to update the status of an evaluation run that uses external or human evaluators. The evaluation must currently have status 'running' if swithcing to completed, or it must have status 'completed' if switching back to 'running'. """
         args = self._update_status_mapped_args(
             status=status,
             id=id,

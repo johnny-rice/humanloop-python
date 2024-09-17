@@ -425,6 +425,7 @@ class DeployConfigRaw(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Deploy a model config to an environment.  If the environment already has a model config deployed, it will be replaced. """
         args = self._deploy_config_mapped_args(
             config_id=config_id,
             project_id=project_id,
@@ -507,6 +508,7 @@ class ApiForpatch(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Deploy a model config to an environment.  If the environment already has a model config deployed, it will be replaced. """
         args = self._deploy_config_mapped_args(
             config_id=config_id,
             project_id=project_id,

@@ -492,6 +492,7 @@ class CreateRaw(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Get a chat response by providing details of the model configuration in the request. """
         args = self._create_mapped_args(
             messages=messages,
             model_config=model_config,
@@ -724,6 +725,7 @@ class ApiForpost(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Get a chat response by providing details of the model configuration in the request. """
         args = self._create_mapped_args(
             messages=messages,
             model_config=model_config,

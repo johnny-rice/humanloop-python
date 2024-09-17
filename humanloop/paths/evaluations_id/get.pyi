@@ -431,6 +431,7 @@ class GetRaw(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Get evaluation by ID. """
         args = self._get_mapped_args(
             id=id,
             evaluator_aggregates=evaluator_aggregates,
@@ -513,6 +514,7 @@ class ApiForget(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Get evaluation by ID. """
         args = self._get_mapped_args(
             id=id,
             evaluator_aggregates=evaluator_aggregates,

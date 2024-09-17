@@ -459,6 +459,7 @@ class CreateModelConfigRaw(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Create a completion for a specific model configuration. """
         args = self._create_model_config_mapped_args(
             model_config_id=model_config_id,
             project=project,
@@ -675,6 +676,7 @@ class ApiForpost(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Create a completion for a specific model configuration. """
         args = self._create_model_config_mapped_args(
             model_config_id=model_config_id,
             project=project,

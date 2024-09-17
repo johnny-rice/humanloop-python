@@ -345,6 +345,7 @@ class DeleteRaw(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Delete a dataset by ID. """
         args = self._delete_mapped_args(
             id=id,
         )
@@ -409,6 +410,7 @@ class ApiFordelete(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Delete a dataset by ID. """
         args = self._delete_mapped_args(
             id=id,
         )

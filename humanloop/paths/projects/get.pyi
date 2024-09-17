@@ -436,6 +436,7 @@ class ListRaw(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Get a paginated list of files. """
         args = self._list_mapped_args(
             page=page,
             size=size,
@@ -540,6 +541,7 @@ class ApiForget(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Get a paginated list of files. """
         args = self._list_mapped_args(
             page=page,
             size=size,

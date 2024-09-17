@@ -424,6 +424,7 @@ class DeactivateConfigRaw(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Remove the project's active config, if set.  This has no effect if the project does not have an active model config set. """
         args = self._deactivate_config_mapped_args(
             id=id,
             environment=environment,
@@ -498,6 +499,7 @@ class ApiFordelete(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Remove the project's active config, if set.  This has no effect if the project does not have an active model config set. """
         args = self._deactivate_config_mapped_args(
             id=id,
             environment=environment,

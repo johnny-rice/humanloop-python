@@ -50,12 +50,14 @@ class CreateEvaluationRequest(
             def provider_api_keys() -> typing.Type['ProviderApiKeys']:
                 return ProviderApiKeys
             hl_generated = schemas.BoolSchema
+            name = schemas.StrSchema
             __annotations__ = {
                 "config_id": config_id,
                 "evaluator_ids": evaluator_ids,
                 "dataset_id": dataset_id,
                 "provider_api_keys": provider_api_keys,
                 "hl_generated": hl_generated,
+                "name": name,
             }
     
     config_id: MetaOapg.properties.config_id
@@ -78,9 +80,12 @@ class CreateEvaluationRequest(
     def __getitem__(self, name: typing_extensions.Literal["hl_generated"]) -> MetaOapg.properties.hl_generated: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["name"]) -> MetaOapg.properties.name: ...
+    
+    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["config_id", "evaluator_ids", "dataset_id", "provider_api_keys", "hl_generated", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["config_id", "evaluator_ids", "dataset_id", "provider_api_keys", "hl_generated", "name", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -101,9 +106,12 @@ class CreateEvaluationRequest(
     def get_item_oapg(self, name: typing_extensions.Literal["hl_generated"]) -> typing.Union[MetaOapg.properties.hl_generated, schemas.Unset]: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["name"]) -> typing.Union[MetaOapg.properties.name, schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["config_id", "evaluator_ids", "dataset_id", "provider_api_keys", "hl_generated", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["config_id", "evaluator_ids", "dataset_id", "provider_api_keys", "hl_generated", "name", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -115,6 +123,7 @@ class CreateEvaluationRequest(
         evaluator_ids: 'CreateEvaluationRequestEvaluatorIds',
         provider_api_keys: typing.Union['ProviderApiKeys', schemas.Unset] = schemas.unset,
         hl_generated: typing.Union[MetaOapg.properties.hl_generated, bool, schemas.Unset] = schemas.unset,
+        name: typing.Union[MetaOapg.properties.name, str, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'CreateEvaluationRequest':
@@ -126,6 +135,7 @@ class CreateEvaluationRequest(
             evaluator_ids=evaluator_ids,
             provider_api_keys=provider_api_keys,
             hl_generated=hl_generated,
+            name=name,
             _configuration=_configuration,
             **kwargs,
         )

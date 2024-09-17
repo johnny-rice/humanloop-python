@@ -283,6 +283,7 @@ class CreateRaw(BaseApi):
         ApiResponseFor201,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Create a new session.  Returns a session ID that can be used to log datapoints to the session. """
         args = self._create_mapped_args(
         )
         return self._create_oapg(
@@ -337,6 +338,7 @@ class ApiForpost(BaseApi):
         ApiResponseFor201,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Create a new session.  Returns a session ID that can be used to log datapoints to the session. """
         args = self._create_mapped_args(
         )
         return self._create_oapg(

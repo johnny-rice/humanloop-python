@@ -399,6 +399,7 @@ class CreateRaw(BaseApi):
         ApiResponseFor201,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Create an evaluator within your organization. """
         args = self._create_mapped_args(
             description=description,
             name=name,
@@ -511,6 +512,7 @@ class ApiForpost(BaseApi):
         ApiResponseFor201,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Create an evaluator within your organization. """
         args = self._create_mapped_args(
             description=description,
             name=name,

@@ -25,6 +25,8 @@ class ProviderApiKeys(BaseModel):
 
     anthropic: typing.Optional[str] = Field(None, alias='anthropic')
 
+    bedrock: typing.Optional[str] = Field(None, alias='bedrock')
+
     cohere: typing.Optional[str] = Field(None, alias='cohere')
 
     openai_azure: typing.Optional[str] = Field(None, alias='openai_azure')

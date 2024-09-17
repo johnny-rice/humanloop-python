@@ -442,6 +442,7 @@ class ListAllForProjectRaw(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Get all the evaluations associated with your project.  Deprecated: This is a legacy unpaginated endpoint. Use `/evaluations` instead, with appropriate sorting, filtering and pagination options. """
         args = self._list_all_for_project_mapped_args(
             project_id=project_id,
             evaluatee_id=evaluatee_id,
@@ -528,6 +529,7 @@ class ApiForget(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """ Get all the evaluations associated with your project.  Deprecated: This is a legacy unpaginated endpoint. Use `/evaluations` instead, with appropriate sorting, filtering and pagination options. """
         args = self._list_all_for_project_mapped_args(
             project_id=project_id,
             evaluatee_id=evaluatee_id,
