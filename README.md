@@ -5,7 +5,7 @@
 # Humanloop<a id="humanloop"></a>
 
 
-[![PyPI](https://img.shields.io/badge/PyPI-v0.7.34-blue)](https://pypi.org/project/humanloop/0.7.34)
+[![PyPI](https://img.shields.io/badge/PyPI-v0.7.35-blue)](https://pypi.org/project/humanloop/0.7.35)
 [![README.md](https://img.shields.io/badge/README-Click%20Here-green)](https://github.com/humanloop/humanloop-python#readme)
 
 </div>
@@ -121,7 +121,7 @@ Python >=3.7
 ## Installation<a id="installation"></a>
 
 ```sh
-pip install humanloop==0.7.34
+pip install humanloop==0.7.35
 ```
 
 ## Getting Started<a id="getting-started"></a>
